@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cooperation Detail</title>
+    <link rel="stylesheet" href="/css/style.css"> <!-- Liên kết đến file CSS -->
+</head>
+<body>
+    <div class="container">
+        <h1>Cooperation Detail</h1>
+        <div class="detail-card">
+            <p>ID: <span th:text="${cooperation.id}"></span></p>
+            <p>Name: <span th:text="${cooperation.name}"></span></p>
+            <p>Email: <span th:text="${cooperation.email}"></span></p>
+            <p>Phone: <span th:text="${cooperation.phone}"></span></p>
+            <p>Description: <span th:text="${cooperation.description}"></span></p>
+            <p>Status: <span th:text="${cooperation.status}"></span></p>
+            <p>Service Type: <span th:text="${cooperation.service_type}"></span></p>
+            <p>Price: <span th:text="${cooperation.price}"></span></p>
+            <p>Deadline: <span th:text="${cooperation.deadline}"></span></p>
+        </div>
+        <a class="button" href="/admin/cooperation">Back to List</a>
+    </div>
+</body>
+</html>

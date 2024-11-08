@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="admin/layouts/head :: head"/>
+<body class="sb-nav-fixed">
+<div th:replace="admin/layouts/nav :: nav" />
+<div id="layoutSidenav">
+    <div th:replace="admin/layouts/sidebar :: sidebar"/>
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <div class="d-flex mt-4 mb-4 justify-content-between align-items-center">
+                    <h2>Update Slide</h2>
+                    <a href="/admin/slide" class="btn btn-sm btn-danger">Back</a>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <form th:action="@{/admin/slide/edit}" method="POST" autocomplete="off" th:object="${data}" enctype="multipart/form-data">
+                                    <input type="hidden"  th:field="*{id}">
+                                    <div class="form-group mb-4">
+                                        <label for="name">Name</label>
+                                        <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Tên" th:field="*{name}">
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="name">Avatar</label>
+                                        <input name="file" type="file" accept="image/png, image/jpg, image/jpeg"/>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label>Status</label>
+                                        <div class="d-flex">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" id="status_active" value="ACTIVE" th:field="*{status}">
+                                                <label class="form-check-label" for="status_active">
+                                                    Active
+                                                </label>
+                                            </div>
+                                            <div class="form-check" style="margin-left: 20px">
+                                                <input class="form-check-input" type="radio" id="status_hide" value="INACTIVE" th:field="*{status}">
+                                                <label class="form-check-label" for="status_hide">
+                                                    Inactive
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div th:replace="admin/layouts/footer :: footer"></div>
+    </div>
+</div>
+<div th:replace="admin/layouts/script :: script"></div>
+</body>
+</html>

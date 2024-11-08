@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Sửa để căn chỉnh nội dung lên trên */
+            background-color: #f8f9fa;
+        }
+        .notification-box {
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-top: 20px; /* Khoảng cách từ trên cùng */
+        }
+        .notification-box h1 {
+            color: #343a40;
+        }
+        .notification-box p {
+            color: #6c757d;
+        }
+        .notification-box a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .notification-box a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="notification-box">
+        <h1>Notification</h1>
+        <p>Your service package is already active. Please check your current service status.</p>
+        <p>Go back to <a href="/">home page</a> or <a href="/profile2">view your profile</a>.</p>
+    </div>
+</body>
+</html>

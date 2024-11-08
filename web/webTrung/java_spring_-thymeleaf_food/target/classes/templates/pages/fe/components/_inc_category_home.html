@@ -1,0 +1,29 @@
+<div th:fragment="inc-category-home" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="container my-5">
+        <h4 class="text-left">Category</h4>
+        <div id="categoryCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="d-flex justify-content-around">
+                        <div th:each="item : ${categories}" class="category-item">
+                            <a th:href="@{/category/{id}(id=${item.id})}" class="d-flex flex-column h-100 justify-content-between align-items-center">
+                                <img th:if="${item.image != null}" th:src="@{'/images/'+${item.image}}" alt="${item.name}" style="width: 100px; height: 100px">
+                                <img th:if="${item.image == null}" src="https://via.placeholder.com/150" class="h-auto" style="width: 100px; height: 100px">
+                                <span th:text="${item.name}" class="text-gray"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more carousel-item here -->
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#categoryCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#categoryCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</div>

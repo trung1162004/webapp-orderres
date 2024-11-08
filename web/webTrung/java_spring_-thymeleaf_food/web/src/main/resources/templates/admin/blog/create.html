@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="admin/layouts/head :: head"/>
+<body class="sb-nav-fixed">
+<div th:replace="admin/layouts/nav :: nav" />
+<div id="layoutSidenav">
+    <div th:replace="admin/layouts/sidebar :: sidebar"/>
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+<!--    <script src="https://cdn.ckeditor.com/4.24.0/standard/ckeditor.js"></script>-->
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <div class="d-flex mt-4 mb-4 justify-content-between align-items-center">
+                    <h2>Add new Blog</h2>
+                    <a href="/admin/blog" class="btn btn-sm btn-danger">Back</a>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <form th:action="@{/admin/blog/create}" method="POST" id="myForm" autocomplete="off" th:object="${data}" enctype="multipart/form-data">
+                                    <div class="row">
+                                        <div class="form-group mb-4 col-md-6 col-12">
+                                            <label for="name">Title</label>
+                                            <input type="text" class="form-control" id="name" name="name"
+                                                   aria-describedby="emailHelp"  placeholder="Enter value" th:field="*{name}">
+                                        </div>
+
+                                        <div class="form-group mb-4 col-md-6 col-12">
+                                            <label  class="mb-2">Status</label>
+                                            <select class="form-control" th:field="*{status}" name="status">
+                                                <option value="">Select value</option>
+                                                <option value="ACTIVE">Active</option>
+                                                <option value="INACTIVE">Inactive</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group mb-4 col-md-6 mb-4 d-flex" >
+                                            <label class="mb-2 me-2">Is Hot?:</label>
+                                            <div class="form-check mx-2">
+                                                <input class="form-check-input" type="radio" id="status_active" value="HOT" th:field="*{hot}">
+                                                <label class="form-check-label" for="status_active">
+                                                    Hot
+                                                </label>
+                                            </div>
+                                            <div class="form-check mx-2">
+                                                <input class="form-check-input" type="radio" id="status_hide" value="NOT" th:field="*{hot}">
+                                                <label class="form-check-label" for="status_hide">
+                                                    Not Hot
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-4 col-md-6 col-12">
+                                            <label for="name">Image</label>
+                                            <input name="file" type="file" accept="image/png, image/jpg, image/jpeg, image/webp" id="file-input"  />
+                                            <img id="img-preview" th:src="@{'/default.jpg'}" style="width: 100px;height: 100px"  alt=""/>
+                                        </div>
+
+                                        <div class="form-group mb-4 col-md-6 col-12">
+                                            <label for="author">Author</label>
+                                            <input type="text" class="form-control" id="author"
+                                                   aria-describedby="emailHelp"  placeholder="Enter value" th:field="*{author}">
+                                        </div>
+
+                                        <div class="form-group mb-4 col-12">
+                                            <label for="name">Description</label>
+                                            <textarea type="text" class="form-control" id="description"
+                                                      rows="3"
+                                                      aria-describedby="emailHelp" placeholder="Enter value" th:field="*{description}">
+                                            </textarea>
+                                        </div>
+                                        <div class="form-group mb-4 col-12">
+                                            <label for="name">Content</label>
+                                            <textarea type="text" class="form-control" id="content"
+                                                      rows="6"
+                                                      aria-describedby="emailHelp" placeholder="Enter value" th:field="*{content}">
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div th:replace="admin/layouts/footer :: footer"></div>
+    </div>
+</div>
+<div th:replace="admin/layouts/script :: script"></div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js" crossorigin="anonymous"></script>
+<script>
+    window.onload = function() {
+        CKEDITOR.replace('content');
+      
+    };
+</script>
+<script type="text/javascript" >
+    $(document).ready(function() {
+     $.validator.setDefaults({
+            ignore: [],
+            highlight: function(element) {
+                $(element).closest('.form-group').addClass('has-error');
+            },
+            unhighlight: function(element) {
+                $(element).closest('.form-group').removeClass('has-error');
+            },
+            errorElement: 'span',
+            errorClass: 'help-block',
+            errorPlacement: function(error, element) {
+                if(element.parent('.input-group').length) {
+                    error.insertAfter(element.parent());
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
+
+        $("#myForm").validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 2
+                },
+                status: {
+                    required: true,
+                },
+                hot: {
+                    required: true,
+                },
+                author: {
+                    required: true,
+                },
+                description: {
+                    required: true,
+                },
+                content: {
+                    required: true,
+                },
+            },
+            submitHandler: function(form) {
+                for (instance in CKEDITOR.instances) {
+                    CKEDITOR.instances[instance].updateElement();
+                }
+                form.submit();
+            }
+        });
+    });
+</script>
+</body>
+</html>

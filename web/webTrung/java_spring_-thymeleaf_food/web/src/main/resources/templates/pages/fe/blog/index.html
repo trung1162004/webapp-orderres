@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
+
+    <title>Blog</title>
+    <link rel="stylesheet" th:href="@{/css/style_fe.css}">
+</head>
+<body>
+<div class="main">
+    <div th:replace="pages/fe/components/_inc_nav :: fe-nav" th:with="categories, type"></div>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-sm-8">
+                <h5 class="mb-3">List blogs</h5>
+                <a th:href="@{/blog-{id}.html(id=${item.id})}" class="article-card" th:each="item:${list}">
+                    <img src="https://via.placeholder.com/150" th:if="${item.avatar == null}" alt="Article Image" style="width: 270px; height: 140px; object-fit: cover;border-radius: 10px">
+                    <img src="https://via.placeholder.com/150"
+                         th:src="@{'/images/'+${item.avatar}}" th:if="${item.avatar != null}"
+                         style="width: 270px; height: 140px; object-fit: cover;border-radius: 10px"
+                         alt="Article Image">
+                    <div style=" width: calc(100% - 270px);">
+                        <div class="title">
+                            <p
+                               th:text="${item.name}">
+                            </p>
+                        </div>
+                        <div class="date" th:text="${#dates.format(item.createdAt, 'dd/MM/yyyy HH:ss')}"></div>
+                        <div class="description" th:text="${item.description}"></div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <h5 class="mb-3">Hot blogs</h5>
+                <div class="article-card" th:each="item:${listHot}" th:if="${item != null}">
+                    <a th:href="@{/blog-{id}.html(id=${item.id})}">
+                        <img src="https://via.placeholder.com/100" th:if="${item.avatar == null}" alt="Article Image" style="width: 150px; height: 100px; object-fit: cover;border-radius: 10px">
+                        <img src="https://via.placeholder.com/100" th:src="@{'/images/'+${item.avatar}}"
+                             th:if="${item.avatar != null}" alt="Article Image" style="width: 150px; height: 100px; object-fit: cover;border-radius: 10px">
+                    </a>
+
+                    <div>
+                        <div class="title">
+                            <a th:href="@{/blog-{id}.html(id=${item.id})}" style="font-size: 15px" th:text="${item.name}"></a>
+                        </div>
+                        <div class="date" th:text="${#dates.format(item.createdAt, 'dd/MM/yyyy HH:ss')}"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="pages/fe/components/_inc_footer :: fe-footer"></div>
+</div>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

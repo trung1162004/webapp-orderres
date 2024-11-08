@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="admin/layouts/head :: head" />
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		function replaceBrWithNewline(id) {
+			var textarea = document.getElementById(id);
+			if (textarea) {
+				textarea.value = textarea.value.replace(/<\/br>/g, "\n");
+			}
+		}
+
+		replaceBrWithNewline("depositRegulation");
+		replaceBrWithNewline("discountRegulation");
+		replaceBrWithNewline("pasgoTimeRegulation");
+		replaceBrWithNewline("reservationTimeRegulation");
+		replaceBrWithNewline("holdTimeRegulation");
+		replaceBrWithNewline("minimumGuestsRegulation");
+		replaceBrWithNewline("invoiceRegulation");
+		replaceBrWithNewline("serviceFeeRegulation");
+		replaceBrWithNewline("bringInFeeRegulation");
+		replaceBrWithNewline("fit");
+		replaceBrWithNewline("specialDish");
+		replaceBrWithNewline("space");
+		replaceBrWithNewline("feature");
+		replaceBrWithNewline("parking");
+
+	});
+</script>
+
+<body class="sb-nav-fixed">
+	<div th:replace="admin/layouts/nav :: nav" />
+	<div id="layoutSidenav">
+		<div th:replace="admin/layouts/sidebar :: sidebar" />
+		<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+		<div id="layoutSidenav_content">
+			<main>
+				<div class="container-fluid px-4">
+					<div class="d-flex mt-4 mb-4 justify-content-between align-items-center">
+						<h2>Update Restaurant</h2>
+						<a href="/admin/restaurant" class="btn btn-sm btn-danger">Back</a>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<div class="card mb-4">
+								<div class="card-body">
+									<p class="alert alert-danger w-100 mb-5" role="alert" th:if="${messageError != ''}"
+										th:text="${messageError}"></p>
+
+									<form th:action="@{/admin/restaurant/edit}" method="POST" autocomplete="off"
+										th:object="${data}" enctype="multipart/form-data">
+										<input type="hidden" th:field="*{id}">
+										<div class="row">
+											<div class="form-group mb-4 col-md-6 col-12">
+												<label for="name">Name</label>
+												<input type="text" class="form-control" id="name"
+													aria-describedby="emailHelp" required placeholder="Enter value"
+													th:field="*{name}" readonly>
+											</div>
+											<div class="form-group mb-4 col-md-6 col-12">
+												<label class="mb-2">Owner</label>
+												<input type="text" class="form-control" id="name"
+																									aria-describedby="emailHelp" required placeholder="Enter value"
+																									th:field="*{user.name}" readonly>
+
+
+											</div>
+
+											<div class="form-group mb-4 col-md-6 col-12">
+												<label class="mb-2">Status</label>
+												<select class="form-control" th:field="*{status}" required>
+													<option value="">Select value</option>
+													<option value="PENDING">Pending</option>
+													<option value="ACTIVE">Active</option>
+													<option value="INACTIVE">Inactive</option>
+													<option value="REJECTED">Rejected</option>
+												</select>
+											</div>
+											<div class="form-group mb-4 col-md-6 col-12">
+												<label class="mb-2">Work Time</label>
+												<div class="d-flex">
+													Open: <input type="time" class="form-control me-2"
+														th:field="*{workTimeOpen}" required readonly>
+													<span class="mx-2">-</span>
+													Close: <input type="time" class="form-control ms-2"
+														th:field="*{workTimeClose}" required readonly>
+												</div>
+											</div>
+											<div class="form-group mb-4 col-12">
+												<label>Category</label>
+												<div class="d-md-flex flex-wrap">
+													<div th:each="item : ${categoryList}" class="form-check ms-2"
+														th:if="${item.status.equals('ACTIVE')}">
+														<input class="form-check-input" type="checkbox"
+															name="categoriesData" th:checked="${item.checked}"
+															th:id="${item.id}" th:value="${item.id}">
+														<label class="form-check-label" th:for="${item.id}"
+															th:text="${item.name}"></label>
+													</div>
+												</div>
+											</div>
+											<div class="form-group mb-4 col-12 col-md-6">
+												<label for="name" class="mb-2">Logo</label>
+												<!--                                            <input name="file" type="file" accept="image/png, image/jpg, image/jpeg, image/webp" th:required="${data.logo == null ? true : false}"/>-->
+												<div>
+													<input name="file" type="file"
+														accept="image/png, image/jpg, image/jpeg, image/webp"
+														th:required="${data.logo == null ? true : false}"
+														class="form-control d-none" id="file-input" readonly />
+													<img id="img-preview" th:if="${data.logo != null}"
+														th:src="@{'/images/'+${data.logo}}"
+														style="width: 100px;height: 100px" onclick="clickImage()"
+														alt="logo" />
+													<img id="img-preview" th:if="${data.logo == null}"
+														th:src="@{'/default.jpg'}"
+														style="width: 100px;height: 100px; object-fit: contain;"
+														alt="logo" onclick="clickImage()" />
+												</div>
+											</div>
+											<div class="form-group mb-4 col-12">
+												<label for="name" class="mb-2">Images</label>
+												<div>
+													<input accept="image/png, image/jpg, image/jpeg, image/webp"
+														id="file-multiple" multiple class="form-control"
+														onchange="previewImages(event)" name="fileMultiple" type="file"
+														readonly />
+
+													<div class="w-100 d-flex flex-wrap gap-5" id="multiple-image">
+														<img th:if="${!data.getImages().isEmpty()}"
+															th:each="item : ${data.getImages()}" class="mt-2"
+															th:src="@{'/images/'+${item}}"
+															style="width: 100px;height: 100px" alt="" />
+													</div>
+												</div>
+											</div>
+
+
+											<div class="form-group mb-4 col-md-6 col-12">
+												<label class="mb-2" for="price">Price approx</label>
+												<input type="text" class="form-control" id="price"
+													aria-describedby="emailHelp" required placeholder="Price from - to"
+													th:field="*{price}" readonly>
+											</div>
+
+											<div class="form-group mb-4 col-md-6 col-12">
+												<label class="mb-2" for="quantity">Quantity table</label>
+												<input type="number" class="form-control" id="quantity" min="0"
+													aria-describedby="emailHelp" required placeholder="quantity"
+													th:field="*{quantity}" readonly>
+											</div>
+
+											<div class="form-group mb-4 col-md-6 col-12">
+												<label class="mb-2" for="email">Email</label>
+												<input type="email" class="form-control" id="email"
+													aria-describedby="emailHelp" required placeholder="Email"
+													th:field="*{email}" readonly>
+											</div>
+
+											<div class="form-group mb-4 col-md-6 col-12">
+												<label class="mb-2" for="phone">Phone</label>
+												<input type="text" class="form-control" id="phone"
+													aria-describedby="emailHelp" required placeholder="Phone"
+													th:field="*{phone}" readonly>
+											</div>
+											<div class="form-group mb-4 col-md-6 col-12">
+												<label class="mb-2" for="address">Address</label>
+												<input type="text" class="form-control" id="address"
+													aria-describedby="emailHelp" placeholder="address"
+													th:field="*{address}" readonly>
+											</div>
+
+											<div class="form-group mb-4 col-md-6 col-12">
+												<label class="mb-2">Location</label>
+												<select class="form-control" th:field="*{location}" readonly>
+													<option value="">Select value</option>
+													<option th:each="item : ${locations}" th:if="${item != null}"
+														th:value="${item.id}" th:text="${item.name}"></option>
+												</select>
+											</div>
+
+											<div class="form-group mb-4 col-md-6 col-12">
+												<label for="discount" class="mb-2">Discount</label>
+												<input type="text" class="form-control" id="discount" max="100" min="0"
+													step="any" aria-describedby="emailHelp" placeholder="discount"
+													th:field="*{discount}" readonly>
+
+											</div>
+
+
+											<div class="form-group mb-4 col-12">
+												<label class="mb-2" for="fit">Fit</label>
+												<textarea type="text" class="form-control" id="fit" rows="6"
+													aria-describedby="emailHelp" placeholder="Suitable"
+													th:field="*{fit}" th:utext="${data.fit}" readonly></textarea>
+											</div>
+											<div class="form-group mb-4 col-12">
+												<label class="mb-2" for="specialDish">Special Dish</label>
+												<textarea type="text" class="form-control" id="specialDish" rows="6"
+													aria-describedby="emailHelp" placeholder="Special dish"
+													th:field="*{specialDish}" th:utext="${data.specialDish}"
+													readonly></textarea>
+											</div>
+											<div class="form-group mb-4 col-12">
+												<label class="mb-2" for="space">Space</label>
+												<textarea type="text" class="form-control" id="space" rows="6"
+													aria-describedby="emailHelp" placeholder="Space" th:field="*{space}"
+													th:utext="${data.space}" readonly></textarea>
+											</div>
+											<div class="form-group mb-4 col-12">
+												<label class="mb-2" for="parking">Parking</label>
+												<textarea type="text" class="form-control" id="parking" rows="6"
+													aria-describedby="emailHelp" placeholder="Parking"
+													th:field="*{parking}" th:utext="${data.parking}"
+													readonly></textarea>
+											</div>
+											<div class="form-group mb-4 col-12">
+												<label class="mb-2" for="feature">Feature</label>
+												<textarea type="text" class="form-control" id="feature" rows="6"
+													aria-describedby="emailHelp" placeholder="Feature"
+													th:field="*{feature}" th:utext="${data.feature}"
+													readonly></textarea>
+											</div>
+
+
+											<div class="form-group mb-4 col-12">
+												<label class="mb-2">Utilities</label>
+												<div class="d-md-flex flex-wrap">
+													<div class="form-check ms-2">
+														<input class="form-check-input" type="checkbox" name="utilities"
+															value="Direct invoice" id="direct_invoice"
+															th:field="*{utilities}" readonly>
+														<label class="form-check-label" for="direct_invoice">Direct
+															invoice</label>
+													</div>
+													<div class="form-check ms-2">
+														<input class="form-check-input" type="checkbox" name="utilities"
+															value="Children chair" id="children_chair"
+															th:field="*{utilities}" readonly>
+														<label class="form-check-label" for="children_chair">Children's
+															chair</label>
+													</div>
+													<div class="form-check ms-2">
+														<input class="form-check-input" type="checkbox" name="utilities"
+															value="Air conditioner" id="air_conditioner"
+															th:field="*{utilities}" readonly>
+														<label class="form-check-label" for="air_conditioner">Air
+															conditioner</label>
+													</div>
+													<div class="form-check ms-2">
+														<input class="form-check-input" type="checkbox" name="utilities"
+															value="Visa Master card" id="visa_master_card"
+															th:field="*{utilities}" readonly>
+														<label class="form-check-label" for="visa_master_card">Visa /
+															Master card</label>
+													</div>
+													<div class="form-check ms-2">
+														<input class="form-check-input" type="checkbox" name="utilities"
+															value="VAT invoice" id="vat_invoice" th:field="*{utilities}"
+															readonly>
+														<label class="form-check-label" for="vat_invoice">VAT
+															invoice</label>
+													</div>
+													<div class="form-check ms-2">
+														<input class="form-check-input" type="checkbox" name="utilities"
+															value="Wifi" id="wifi" th:field="*{utilities}" readonly>
+														<label class="form-check-label" for="wifi">Wifi</label>
+													</div>
+													<div class="form-check ms-2">
+														<input class="form-check-input" type="checkbox" name="utilities"
+															value="Projector" id="projector" th:field="*{utilities}"
+															readonly>
+														<label class="form-check-label"
+															for="projector">Projector</label>
+													</div>
+													<div class="form-check ms-2">
+														<input class="form-check-input" type="checkbox" name="utilities"
+															value="Sound light" id="sound_light" th:field="*{utilities}"
+															readonly>
+														<label class="form-check-label" for="sound_light">Sound -
+															light</label>
+													</div>
+													<div class="form-check ms-2">
+														<input class="form-check-input" type="checkbox" name="utilities"
+															value="Cash payment" id="cash_payment"
+															th:field="*{utilities}" readonly>
+														<label class="form-check-label" for="cash_payment">Cash
+															payment</label>
+													</div>
+													<div class="form-check ms-2">
+														<input class="form-check-input" type="checkbox" name="utilities"
+															value="Smoking area" id="smoking_area"
+															th:field="*{utilities}" readonly>
+														<label class="form-check-label" for="smoking_area">Smoking
+															area</label>
+													</div>
+													<div class="form-check ms-2">
+														<input class="form-check-input" type="checkbox" name="utilities"
+															value="Car park" id="car_park" th:field="*{utilities}"
+															readonly>
+														<label class="form-check-label" for="car_park">Car park</label>
+													</div>
+													<div class="form-check ms-2">
+														<input class="form-check-input" type="checkbox" name="utilities"
+															value="MC program" id="mc_program" th:field="*{utilities}"
+															readonly>
+														<label class="form-check-label" for="mc_program">MC
+															program</label>
+													</div>
+													<div class="form-check ms-2">
+														<input class="form-check-input" type="checkbox" name="utilities"
+															value="Outdoor table" id="outdoor_table"
+															th:field="*{utilities}" readonly>
+														<label class="form-check-label" for="outdoor_table">Outdoor
+															table</label>
+													</div>
+													<div class="form-check ms-2">
+														<input class="form-check-input" type="checkbox" name="utilities"
+															value="Football K+" id="football_k" th:field="*{utilities}"
+															readonly>
+														<label class="form-check-label" for="football_k">Football
+															K+</label>
+													</div>
+													<div class="form-check ms-2">
+														<input class="form-check-input" type="checkbox" name="utilities"
+															value="Set lunch" id="set_lunch" th:field="*{utilities}"
+															readonly>
+														<label class="form-check-label" for="set_lunch">Set
+															lunch</label>
+													</div>
+													<div class="form-check ms-2">
+														<input class="form-check-input" type="checkbox" name="utilities"
+															value="Private room" id="private_room"
+															th:field="*{utilities}" readonly>
+														<label class="form-check-label" for="private_room">Private
+															room</label>
+													</div>
+													<div class="form-check ms-2">
+														<input class="form-check-input" type="checkbox" name="utilities"
+															value="Karaoke" id="karaoke" th:field="*{utilities}"
+															readonly>
+														<label class="form-check-label" for="karaoke">Karaoke</label>
+													</div>
+													<div class="form-check ms-2">
+														<input class="form-check-input" type="checkbox" name="utilities"
+															value="Event decoration" id="event_decoration"
+															th:field="*{utilities}" readonly>
+														<label class="form-check-label" for="event_decoration">Event
+															decoration</label>
+													</div>
+													<div class="form-check ms-2">
+														<input class="form-check-input" type="checkbox" name="utilities"
+															value="Children play area" id="children_play_area"
+															th:field="*{utilities}" readonly>
+														<label class="form-check-label"
+															for="children_play_area">Children's play area</label>
+													</div>
+												</div>
+											</div>
+
+											<!--
+											<div class="form-group mb-4 col-md-6 col-12">
+												<label for="name" class="mb-2">Map</label>
+												<input type="text" class="form-control" id="map"
+													aria-describedby="emailHelp" placeholder="map" th:field="*{map}">
+											</div>-->
+											<div class="form-group mb-4 col-md-6 col-12">
+												<label class="mb-2" for="depositRegulation">Deposit Regulation</label>
+												<textarea type="text" class="form-control" id="depositRegulation"
+													rows="6" aria-describedby="emailHelp"
+													placeholder="1. Deposit regulation: specific details as follows"
+													th:field="*{depositRegulation}" th:utext="${data.depositRegulation}"
+													readonly></textarea>
+											</div>
+											<div class="form-group mb-4 col-md-6 col-12">
+												<label class="mb-2" for="discountRegulation">Discount Regulation</label>
+												<textarea type="text" class="form-control" id="discountRegulation"
+													rows="6" aria-describedby="emailHelp"
+													placeholder="2. Discount regulation: specific details as follows"
+													th:field="*{discountRegulation}"
+													th:utext="${data.discountRegulation}" readonly></textarea>
+											</div>
+											<div class="form-group mb-4 col-md-6 col-12">
+												<label class="mb-2" for="pasgoTimeRegulation">PasGo Reception Time
+													Regulation</label>
+												<textarea type="text" class="form-control" id="pasgoTimeRegulation"
+													rows="6" aria-describedby="emailHelp"
+													placeholder="3. PasGo reception time regulation: specific details as follows"
+													th:field="*{pasgoTimeRegulation}"
+													th:utext="${data.pasgoTimeRegulation}" readonly></textarea>
+											</div>
+											<div class="form-group mb-4 col-md-6 col-12">
+												<label class="mb-2" for="reservationTimeRegulation">Reservation Time
+													Regulation</label>
+												<textarea type="text" class="form-control"
+													id="reservationTimeRegulation" rows="6" aria-describedby="emailHelp"
+													placeholder="4. Reservation time regulation: no specific requirement"
+													th:field="*{reservationTimeRegulation}"
+													th:utext="${data.reservationTimeRegulation}" readonly></textarea>
+											</div>
+											<div class="form-group mb-4 col-md-6 col-12">
+												<label class="mb-2" for="holdTimeRegulation">Maximum Hold Time
+													Regulation</label>
+												<textarea type="text" class="form-control" id="holdTimeRegulation"
+													rows="6" aria-describedby="emailHelp"
+													placeholder="5. Maximum hold time regulation: specific details as follows"
+													th:field="*{holdTimeRegulation}"
+													th:utext="${data.holdTimeRegulation}" readonly></textarea>
+											</div>
+											<div class="form-group mb-4 col-md-6 col-12">
+												<label class="mb-2" for="minimumGuestsRegulation">Minimum Guests
+													Regulation</label>
+												<textarea type="text" class="form-control" id="minimumGuestsRegulation"
+													rows="6" aria-describedby="emailHelp"
+													placeholder="6. Minimum guests regulation: specific details as follows"
+													th:field="*{minimumGuestsRegulation}"
+													th:utext="${data.minimumGuestsRegulation}" readonly></textarea>
+											</div>
+											<div class="form-group mb-4 col-md-6 col-12">
+												<label class="mb-2" for="invoiceRegulation">Invoice Regulation</label>
+												<textarea type="text" class="form-control" id="invoiceRegulation"
+													rows="6" aria-describedby="emailHelp"
+													placeholder="7. Invoice regulation: specific details as follows"
+													th:field="*{invoiceRegulation}" th:utext="${data.invoiceRegulation}"
+													readonly></textarea>
+											</div>
+											<div class="form-group mb-4 col-md-6 col-12">
+												<label class="mb-2" for="serviceFeeRegulation">Service Fee
+													Regulation</label>
+												<textarea type="text" class="form-control" id="serviceFeeRegulation"
+													rows="6" aria-describedby="emailHelp"
+													placeholder="8. Service fee regulation"
+													th:field="*{serviceFeeRegulation}"
+													th:utext="${data.serviceFeeRegulation}" readonly></textarea>
+											</div>
+											<div class="form-group mb-4 col-md-6 col-12">
+												<label class="mb-2" for="bringInFeeRegulation">Bring-In Fee
+													Regulation</label>
+												<textarea type="text" class="form-control" id="bringInFeeRegulation"
+													rows="6" aria-describedby="emailHelp"
+													placeholder="9. Bring-in fee regulation"
+													th:field="*{bringInFeeRegulation}"
+													th:utext="${data.bringInFeeRegulation}" readonly></textarea>
+											</div>
+											<div class="form-group mb-4 col-12">
+												<label class="mb-2" for="note">Note reason</label>
+												<textarea type="text" class="form-control" id="note" rows="3"
+													aria-describedby="emailHelp" placeholder="Note reason"
+													th:required="${data.getStatus() == 'REJECTED'}" th:field="*{note}">
+                                            </textarea>
+											</div>
+										</div>
+										<div class="form-group">
+											<button type="submit" class="btn btn-primary">Save</button>
+										</div>
+
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+			<div th:replace="admin/layouts/footer :: footer"></div>
+		</div>
+	</div>
+	<script>
+		CKEDITOR.replace('content');
+		CKEDITOR.replace('description');
+
+		function clickImage() {
+			document.getElementById('file-input').click();
+		}
+		function previewImages(event) {
+			const files = event.target.files;
+			const previewContainer = document.getElementById('multiple-image');
+			console.log(previewContainer)
+			previewContainer.innerHTML = ''; // Clear previous previews
+
+			for (const file of files) {
+				const img = document.createElement('img');
+				const src = URL.createObjectURL(file);
+				img.src = src;
+				img.className = 'my-2'
+				img.width = 100;
+				img.height = 100;
+				previewContainer.appendChild(img);
+			}
+		}
+	</script>
+	<!--	<script>
+		function initMap() {
+			var address = document.getElementById('map').value;
+			var geocoder = new google.maps.Geocoder();
+			var map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 15,
+				center: {lat: -34.397, lng: 150.644}
+			});
+
+			geocoder.geocode({'address': address}, function (results, status) {
+				if (status === 'OK') {
+					map.setCenter(results[0].geometry.location);
+					var marker = new google.maps.Marker({
+						map: map,
+						position: results[0].geometry.location
+					});
+				} else {
+					alert('Geocode was not successful for the following reason: ' + status);
+				}
+			});
+		}
+		document.getElementById('map').addEventListener('change', initMap);
+	</script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+-->
+	<div th:replace="admin/layouts/script :: script"></div>
+</body>
+
+</html>

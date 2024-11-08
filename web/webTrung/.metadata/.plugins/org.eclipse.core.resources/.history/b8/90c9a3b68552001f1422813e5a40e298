@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		crossorigin="anonymous">
+	<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+
+	<title>Bookings History</title>
+	<link rel="stylesheet" th:href="@{/css/style_fe.css}">
+</head>
+
+<body>
+	<div class="main">
+		<div th:replace="pages/fe/components/_inc_nav :: fe-nav" th:with="user"></div>
+		<div class="container mt-5 mb-5">
+			<div class="row">
+				<!-- Sidebar -->
+				<div th:replace="pages/fe/user/inc_sidebar :: fe-user-sidebar" th:with="user,totalCooperation"></div>
+				<!-- Main content -->
+				<div class="col-md-9">
+					<h3 class="mb-5">Bookings History</h3>
+
+					<ul class="nav nav-tabs mt-2 mb-4">
+						<li class="nav-item px-3">
+							<a class="nav-link  px-3" th:if="${status == null || status.equals('')}"
+								href="javascript:void(0)">All</a>
+							<a class="nav-link px-3 active" th:if="${!(status == null || status.equals(''))}"
+								href="/booking-history.html?page=1&page_size=10">All</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link  px-3" th:if="${status.equals('PENDING')}"
+								href="javascript:void(0)">Pending</a>
+							<a class="nav-link px-3 active" th:if="${!status.equals('PENDING')}"
+								href="/booking-history.html?page=1&page_size=10&status=PENDING">Pending</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link  px-3" th:if="${status.equals('APPROVED')}"
+								href="javascript:void(0)">Approved</a>
+							<a class="nav-link px-3 active" th:if="${!status.equals('APPROVED')}"
+								href="/booking-history.html?page=1&page_size=10&status=APPROVED">Approved</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link px-3 " th:if="${status.equals('REJECTED')}"
+								href="javascript:void(0)">Rejected</a>
+							<a class="nav-link px-3 active" th:if="${!status.equals('REJECTED')}"
+								href="/booking-history.html?page=1&page_size=10&status=REJECTED">Rejected</a>
+						</li>
+
+					</ul>
+					<h5 class="text-center my-3" th:if="${lists.size() <= 0}"> No data result.</h5>
+					<div th:if="${lists.size() > 0}">
+						<div class="border rounded  my-2 p-3" th:each="item : ${lists}" th:if="item != null">
+							<div class="d-flex">
+								<img class="me-2" th:if="${item.getLogo() == null}" th:src="@{'/default.jpg'}"
+									style="width: 150px;height: 150px; object-fit: cover;" alt="logo" />
+								<img class="me-2" th:if="${item.getLogo() != null}"
+									th:src="@{'/images/'+${item.getLogo()}}"
+									style="width: 150px;height: 150px; object-fit: cover;" alt="logo" />
+								<div class="ms-2 w-100">
+									<div class="d-flex mb-2 justify-content-between align-items-center">
+										<p class="mb-0">
+											<span>Code</span>:<b class="mx-2" th:text="${item.getCode()}"></b>
+										</p>
+										<div class="date"
+											th:text="${#dates.format(item.createdAt, 'dd/MM/yyyy HH:ss')}"></div>
+									</div>
+									<div class="mb-2">
+										<h5 class="font-weight-bold" th:text="${item.getRestaurantName()}"></h5>
+										<p class="d-flex justify-content-between">
+											<span>Number customers: </span>
+											<span th:text="${item.getQuantity()}"> </span>
+										</p>
+									</div>
+									<div class="mb-2">
+										<h5 class="font-weight-bold" th:text="${item.getDiscount()}"></h5>
+										<p class="d-flex justify-content-between">
+											<span>Discount: </span>
+											<span th:text="${item.getDiscount()}"> </span>
+										</p>
+									</div>
+									<div class="d-flex justify-content-between align-items-center">
+										<p class="fw-normal mb-0">
+											Arrival time:
+										</p>
+										<div class="date"
+											th:text="${#temporals.format(item.timeBooking, 'dd/MM/yyyy HH:ss')}"></div>
+									</div>
+
+								</div>
+							</div>
+							<br class="my-2">
+							<div class="d-flex justify-content-between align-items-center">
+								<!--   <p class="mb-0">Total price:
+                                <b class="mx-2"
+                                   th:text="'$' + ${#numbers.formatDecimal(item.getPrice(), 1, 'COMMA', 2, 'POINT')}">
+                                </b>
+                            </p> -->
+								<p class="text-success mb-0 fw-bold border  border-success px-4 py-2"
+									th:if="${item.getStatus().equals('APPROVED')}"> Approved</p>
+								<p class="text-danger mb-0 fw-bold border border-danger px-4 py-2"
+									th:if="${item.getStatus().equals('REJECTED')}"> Rejected</p>
+								<p class="text-warning mb-0 fw-bold border border-warning px-4 py-2"
+									th:if="${item.getStatus().equals('PENDING')}"> Pending</p>
+							</div>
+						</div>
+						<div th:replace="pages/fe/components/_inc_pagination :: fe-pagination"
+							th:with="page, totalPage, page_size, url, params"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div th:replace="pages/fe/components/_inc_footer :: fe-footer"></div>
+	</div>
+
+	<!-- Bootstrap Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+	<div th:replace="admin/layouts/script :: script"></div>
+
+</body>
+
+</html>

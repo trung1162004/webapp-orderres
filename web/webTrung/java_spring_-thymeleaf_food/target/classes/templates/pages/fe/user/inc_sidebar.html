@@ -1,0 +1,35 @@
+<div class="col-md-3" th:fragment="fe-user-sidebar" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="text-center">
+        <div class="profile-img">
+            <img th:if="${user != null && user.avatar != null}" th:src="@{'/images/'+${user.avatar}}" alt="Profile Picture" class="w-100-px h-auto" style="width:100px;height:100px !important;object-fit: cover;">
+            <img th:if="${user == null || (user != null && user.avatar == null)}" th:src="@{'/default.jpg'}" alt="Profile Picture" class="w-100-px h-auto" style="width:100px;height:100px !important;object-fit: cover;">
+        </div>
+    </div>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a href="/update-info.html">
+                <i class="bi bi-person"></i> Account Information
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="/update-password.html">
+                <i class="bi bi-lock"></i> Password Management
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="/favourite.html">
+                <i class="bi bi-heart"></i> Favorites list
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="/lich-su-dat-cho.html">
+                <i class="bi bi-calendar3"></i> List Order
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="/logout">
+                <i class="bi bi-box-arrow-right"></i> Logout
+            </a>
+        </li>
+    </ul>
+</div>

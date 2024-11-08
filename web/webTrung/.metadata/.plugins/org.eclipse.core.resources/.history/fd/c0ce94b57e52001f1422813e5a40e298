@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		crossorigin="anonymous">
+	<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+	<!--    <script src="-->
+	<!--https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js-->
+	<!--"></script>-->
+
+	<title th:text="'Detail restaurant'"></title>
+	<link rel="stylesheet" th:href="@{/css/style_fe.css}">
+</head>
+<style>
+	.image-container {
+		position: relative;
+		display: inline-block;
+	}
+
+	.image-container img {
+		transition: transform 0.2s ease-in-out;
+		width: 100px;
+		height: 100px;
+	}
+
+	#imageOverlay {
+		display: none;
+		/* Ẩn lớp phủ ban đầu */
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.8);
+		justify-content: center;
+		align-items: center;
+		z-index: 1000;
+	}
+
+	#imageOverlay img {
+		max-width: 80%;
+		max-height: 80%;
+	}
+
+
+	.utilities {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 10px;
+		border: 1px solid #ddd;
+		border-radius: 7px;
+		padding: 15px;
+	}
+
+
+	.form-check {
+		position: relative;
+		padding-left: 35px;
+		margin-bottom: 20px;
+		cursor: pointer;
+		font-size: 16px;
+		/* Kích thước chữ bình thường */
+		font-weight: normal;
+		color: #000;
+	}
+
+	.form-check-input {
+		position: absolute;
+		opacity: 0;
+		cursor: pointer;
+		height: 0;
+		width: 0;
+		margin-left: 10px;
+	}
+
+	.form-check-label {
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+		user-select: none;
+	}
+
+	.form-check-label::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 25px;
+		height: 25px;
+		border-radius: 50%;
+
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.form-check-input:checked+.form-check-label::before {
+		content: '√';
+		color: white;
+		font-size: 16px;
+		border: none;
+		background-color: green;
+	}
+
+	.form-check-input:not(:checked)+.form-check-label::before {
+		content: '☓';
+		color: white;
+		font-size: 16px;
+		border: none;
+		background-color: red;
+	}
+
+	.form-check-input:disabled+.form-check-label {
+		opacity: 1;
+		/* Đảm bảo không bị mờ */
+		color: #000;
+		/* Màu chữ bình thường */
+	}
+</style>
+<script>
+	function showImage(src) {
+		document.getElementById("overlayImage").src = src;
+		document.getElementById("imageOverlay").style.display = "flex";
+	}
+
+	function hideImage() {
+		document.getElementById("imageOverlay").style.display = "none";
+	}
+</script>
+
+
+<body>
+	<div id="fb-root"></div>
+	<script async defer crossorigin="anonymous"
+		src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v20.0&appId=3205159929509308"
+		nonce="GqMVy9Kk"></script>
+	<div class="main">
+		<div th:replace="pages/fe/components/_inc_nav :: fe-nav"></div>
+		<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+		<div class="container my-4">
+			<div class="row my-5" th:if="${data != null}">
+				<div class="col-md-8 ">
+					<img th:if="${data.logo != null}" th:src="@{'/images/'+${data.logo}}" alt="${data.name}"
+						class="w-100" style="max-height: 500px; object-fit: cover" />
+					<img th:if="${data.logo == null}" src="https://via.placeholder.com/150" class="w-100"
+						style="max-height: 500px; object-fit: cover" />
+					<div class="my-3 d-flex gap-3">
+						<div class="image-container" th:if="${!data.getImages().isEmpty()}"
+							th:each="item : ${data.getImages()}">
+							<img class="mt-2" th:src="@{'/images/'+${item}}" style="width: 100px;height: 100px" alt=""
+								onclick="showImage(this.src)" />
+						</div>
+					</div>
+
+					<div id="imageOverlay" onclick="hideImage()">
+						<img id="overlayImage" src="" alt="" />
+					</div>
+				</div>
+				<div class="col-md-4 sticky-top">
+					<div class="card-body card-body-custom">
+
+						<h3 class="card-title" th:text="${data.name}"></h3>
+						<!--                    <p class="card-text card-text-custom" th:text="${data.address}">Số 24 đường Bà Huyện Thanh Quan, P. 6, Q. 3, Tp. Hồ Chí Minh</p>-->
+						<!--                        <p class="discount">Giảm 10%</p>-->
+						<div class=" d-flex align-items-center mt-3">
+							Price approx $$$$$:&nbsp;
+							<h4 class="price mb-0" th:text="' ' + ${data.price} + ' $/People'"></h4>
+							<p class="favorite-card-text mb-0 text-danger mx-2" th:if="${data.discount > 0}"
+								th:text="${'(-' + data.discount + '% )'}"></p>
+						</div>
+						<p class="my-2">Address: <strong th:text="${data.address}"></strong></p>
+						<p class="mt-2 mb-1">Open: <strong id="workTimeOpen" th:text="${data.workTimeOpen}"></strong> - <strong id="workTimeClose"
+								th:text="${data.workTimeClose}"></p>
+						<div class="my-2" th:if="${data.categories.size() > 0}">
+							<div class="d-md-flex flex-wrap align-items-center mt-2">
+								<span>Category: </span>
+								<span class="badge badge-info ms-2" th:each="dataItem, index : ${data.categories}"
+									th:if="${dataItem != null && dataItem.category != null}"
+									th:text="${dataItem.category.name}"></span>
+							</div>
+						</div>
+						<div class="d-flex align-items-center align-middle" th:if="${user != null}">
+							<!--                        <button class="btn btn-danger my-2" data-bs-toggle="modal" data-bs-target="#myModal" >Booking</button>-->
+							<a th:if="${user != null}" th:href="@{/restaurant-favorite/{id}(id=${data.id})}"
+								class="btn btn-outline-danger">
+								<i class="fas fa-heart"></i>
+							</a>
+						</div>
+						<div class="d-flex align-items-center align-middle" th:if="${user == null}">
+							<button class="btn btn-danger my-2"
+								onclick="alert('Please login to booking')">Booking</button>
+						</div>
+
+
+						<form id="bookingForm" th:if="${user != null}" th:action="'/restaurant-booking-'+ ${data.id} + '.html'"
+							method="POST" autocomplete="off" th:object="${orderData}">
+							<div class="row mt-4">
+								<div class="col-6">
+									<label for="name" class="form-label">Full name</label>
+									<input type="text" class="form-control" id="name" th:field="*{receiverName}"
+										required>
+								</div>
+								<div class="col-6">
+									<label for="email" class="form-label">Email</label>
+									<input type="email" class="form-control" id="email" th:field="*{receiverEmail}"
+										required>
+								</div>
+							</div>
+							<div class="row mt-4">
+								<div class="col-6">
+									<label for="phone" class="form-label">Phone</label>
+									<input type="text" class="form-control" id="phone" th:field="*{receiverPhone}"
+										required>
+								</div>
+								<div class="col-6">
+									<label for="quantity" class="form-label">Quantity</label>
+									<input type="number" class="form-control" min="1" id="quantity"
+										th:field="*{quantity}" required>
+								</div>
+							</div>
+							<div class="mb-3 mt-4">
+								<label for="time" class="form-label">Time booking</label>
+								<div class="row">
+									<div class="col-6">
+										<input type="date" th:attr="min=${today}" class="form-control" id="time"
+											name="dateBooking" required />
+									</div>
+									<div class="col-6">
+										<input type="time" class="form-control" id="timeDataBooking" name="timeDataBooking" required />
+									</div>
+								</div>
+							</div>
+							<div class="d-flex justify-content-center">
+								<button type="submit" class="btn btn-primary mx-2">Submit</button>
+								<!--<button type="button" class="btn btn-secondary mx-2" data-bs-dismiss="modal"
+									aria-label="Close">Close</button>-->
+							</div>
+							<p id="error-message" style="color: red;"></p>
+						</form>
+
+					</div>
+				</div>
+
+				<div class="col-8 my-2">
+					<div class="form-group">
+
+						<div class="summary-fields p-3 border rounded">
+							<label class="mb-2" for="summary">
+								<h3>Summary</h3>
+							</label>
+							<div class="form-group mb-2">
+								<label for="fit">Fit:</label>
+								<p th:utext="${data.fit}" class="normal-text"></p>
+							</div>
+							<div class="form-group mb-2">
+								<label for="special-dishes">Special dishes:</label>
+								<p th:utext="${data.specialDish}" class="normal-text"></p>
+							</div>
+							<div class="form-group mb-2">
+								<label for="space">Space:</label>
+								<p th:utext="${data.space}" class="normal-text"></p>
+							</div>
+							<div class="form-group mb-2">
+								<label for="for-car">Parking:</label>
+								<p th:utext="${data.parking}" class="normal-text"></p>
+							</div>
+							<div class="form-group mb-2">
+								<label for="speciality">Feature:</label>
+								<p th:utext="${data.feature}" class="normal-text"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-8 my-2">
+					<div class="form-group">
+
+						<div class="regulations-fields p-3 border rounded">
+							<label class="mb-2" for="regulations">
+								<h3>Regulations</h3>
+							</label>
+							<div class="form-group mb-2">
+								<label for="deposit-regulations">1. Deposit regulations:</label>
+								<p th:utext="${data.depositRegulation}" class="normal-text"></p>
+							</div>
+							<div class="form-group mb-2">
+								<label for="incentives">2. Regulations on incentives:</label>
+								<p th:utext="${data.discountRegulation}" class="normal-text"></p>
+							</div>
+							<div class="form-group mb-2">
+								<label for="guest-reception-time">3. Regulations on Eat&Eat guest reception
+									time:</label>
+								<p th:utext="${data.pasgoTimeRegulation}" class="normal-text"></p>
+							</div>
+							<div class="form-group mb-2">
+								<label for="reservation-time">4. Regulations on Reservation Time:</label>
+								<p th:utext="${data.reservationTimeRegulation}" class="normal-text"></p>
+							</div>
+							<div class="form-group mb-2">
+								<label for="max-reservation-time">5. Regulations on Maximum Reservation
+									Time:</label>
+								<p th:utext="${data.holdTimeRegulation}" class="normal-text"></p>
+							</div>
+							<div class="form-group mb-2">
+								<label for="min-guests">6. Regulations on minimum number of guests per table
+									booking:</label>
+								<p th:utext="${data.minimumGuestsRegulation}" class="normal-text"></p>
+							</div>
+							<div class="form-group mb-2">
+								<label for="invoice">7. Regulations on Invoice:</label>
+								<p th:utext="${data.invoiceRegulation}" class="normal-text"></p>
+							</div>
+							<div class="form-group mb-2">
+								<label for="private-room-fee">8. Regulations on Service Fees:</label>
+								<p th:utext="${data.serviceFeeRegulation}" class="normal-text"></p>
+							</div>
+							<div class="form-group mb-2">
+								<label for="service-fees">9. Private Room Fee Regulations:</label>
+								<p th:utext="${data.bringInFeeRegulation}" class="normal-text"></p>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="col-8 my-2">
+					<div class="utilities">
+						<div class="form-group mb-4 col-12">
+							<label class="mb-2">
+								<h3>Utilities</h3>
+							</label>
+							<div class="d-md-flex flex-wrap">
+								<div class="row">
+									<div class="col-6">
+
+										<div class="form-check ms-2">
+											<input class="form-check-input" type="checkbox" name="utilities"
+												value="Direct invoice" id="direct_invoice"
+												th:checked="${data.utilities.contains('Direct invoice')}" disabled>
+											<label class="form-check-label" for="direct_invoice">Direct
+												invoice</label>
+										</div>
+										<div class="form-check ms-2">
+											<input class="form-check-input" type="checkbox" name="utilities"
+												value="Children chair" id="children_chair"
+												th:checked="${data.utilities.contains('Children chair')}" disabled>
+											<label class="form-check-label" for="children_chair">Children's
+												chair</label>
+										</div>
+										<div class="form-check ms-2">
+											<input class="form-check-input" type="checkbox" name="utilities"
+												value="Air conditioner" id="air_conditioner"
+												th:checked="${data.utilities.contains('Air conditioner')}" disabled>
+											<label class="form-check-label" for="air_conditioner">Air
+												conditioner</label>
+										</div>
+										<div class="form-check ms-2">
+											<input class="form-check-input" type="checkbox" name="utilities"
+												value="Visa Master card" id="visa_master_card"
+												th:checked="${data.utilities.contains('Visa Master card')}" disabled>
+											<label class="form-check-label" for="visa_master_card">Visa / Master
+												card</label>
+										</div>
+										<div class="form-check ms-2">
+											<input class="form-check-input" type="checkbox" name="utilities"
+												value="VAT invoice" id="vat_invoice"
+												th:checked="${data.utilities.contains('VAT invoice')}" disabled>
+											<label class="form-check-label" for="vat_invoice">VAT invoice</label>
+										</div>
+										<div class="form-check ms-2">
+											<input class="form-check-input" type="checkbox" name="utilities"
+												value="Wifi" id="wifi" th:checked="${data.utilities.contains('Wifi')}"
+												disabled>
+											<label class="form-check-label" for="wifi">Wifi</label>
+										</div>
+										<div class="form-check ms-2">
+											<input class="form-check-input" type="checkbox" name="utilities"
+												value="Projector" id="projector"
+												th:checked="${data.utilities.contains('Projector')}" disabled>
+											<label class="form-check-label" for="projector">Projector</label>
+										</div>
+										<div class="form-check ms-2">
+											<input class="form-check-input" type="checkbox" name="utilities"
+												value="Sound light" id="sound_light"
+												th:checked="${data.utilities.contains('Sound light')}" disabled>
+											<label class="form-check-label" for="sound_light">Sound - light</label>
+										</div>
+										<div class="form-check ms-2">
+											<input class="form-check-input" type="checkbox" name="utilities"
+												value="Cash payment" id="cash_payment"
+												th:checked="${data.utilities.contains('Cash payment')}" disabled>
+											<label class="form-check-label" for="cash_payment">Cash payment</label>
+										</div>
+										<div class="form-check ms-2">
+											<input class="form-check-input" type="checkbox" name="utilities"
+												value="Smoking area" id="smoking_area"
+												th:checked="${data.utilities.contains('Smoking area')}" disabled>
+											<label class="form-check-label" for="smoking_area">Smoking area</label>
+										</div>
+
+									</div>
+									<div class="col-6">
+
+										<div class="form-check ms-2">
+											<input class="form-check-input" type="checkbox" name="utilities"
+												value="Car park" id="car_park"
+												th:checked="${data.utilities.contains('Car park')}" disabled>
+											<label class="form-check-label" for="car_park">Car park</label>
+										</div>
+										<div class="form-check ms-2">
+											<input class="form-check-input" type="checkbox" name="utilities"
+												value="MC program" id="mc_program"
+												th:checked="${data.utilities.contains('MC program')}" disabled>
+											<label class="form-check-label" for="mc_program">MC program</label>
+										</div>
+										<div class="form-check ms-2">
+											<input class="form-check-input" type="checkbox" name="utilities"
+												value="Outdoor table" id="outdoor_table"
+												th:checked="${data.utilities.contains('Outdoor table')}" disabled>
+											<label class="form-check-label" for="outdoor_table">Outdoor
+												table</label>
+										</div>
+										<div class="form-check ms-2">
+											<input class="form-check-input" type="checkbox" name="utilities"
+												value="Football K+" id="football_k"
+												th:checked="${data.utilities.contains('Football K+')}" disabled>
+											<label class="form-check-label" for="football_k">Football K+</label>
+										</div>
+										<div class="form-check ms-2">
+											<input class="form-check-input" type="checkbox" name="utilities"
+												value="Set lunch" id="set_lunch"
+												th:checked="${data.utilities.contains('Set lunch')}" disabled>
+											<label class="form-check-label" for="set_lunch">Set lunch</label>
+										</div>
+										<div class="form-check ms-2">
+											<input class="form-check-input" type="checkbox" name="utilities"
+												value="Private room" id="private_room"
+												th:checked="${data.utilities.contains('Private room')}" disabled>
+											<label class="form-check-label" for="private_room">Private room</label>
+										</div>
+										<div class="form-check ms-2">
+											<input class="form-check-input" type="checkbox" name="utilities"
+												value="Karaoke" id="karaoke"
+												th:checked="${data.utilities.contains('Karaoke')}" disabled>
+											<label class="form-check-label" for="karaoke">Karaoke</label>
+										</div>
+										<div class="form-check ms-2">
+											<input class="form-check-input" type="checkbox" name="utilities"
+												value="Event decoration" id="event_decoration"
+												th:checked="${data.utilities.contains('Event decoration')}" disabled>
+											<label class="form-check-label" for="event_decoration">Event
+												decoration</label>
+										</div>
+										<div class="form-check ms-2">
+											<input class="form-check-input" type="checkbox" name="utilities"
+												value="Children play area" id="children_play_area"
+												th:checked="${data.utilities.contains('Children play area')}" disabled>
+											<label class="form-check-label" for="children_play_area">Children's play
+												area</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+<!--
+				<div class="map">
+					<div class="col-8 my-2" id="map" style="height: 400px; width: 67%;">
+						<input type="hidden" name="latitude" value="${restaurant.latitude}" />
+						<input type="hidden" name="longitude" value="${restaurant.longitude}" />
+
+					</div>
+				</div>-->
+				<div class="comment">
+					<div class="col-8 my-2">
+						<div class="fb-comments" data-href="https://123code.net/" data-width="100%" data-numposts="5">
+						</div>
+						<!--                <div class="fb-comments"  th:data-href="${currentUrl}" data-width="" data-numposts="5"></div>-->
+					</div>
+				</div>
+			</div>
+			<p class="text-center" th:if="${data == null}">No data</p>
+
+			<section>
+				<header>
+					<h3>Relation restaurant</h3>
+				</header>
+				<div class="row">
+					<div class="col-md-6 col-lg-4 my-5" th:each="item : ${lists}">
+						<div class="card card-custom h-100">
+							<a th:href="@{/restaurant-{id}.html(id=${item.id})}" class="h-100">
+								<img th:if="${item.logo != null}" th:src="@{'/images/'+${item.logo}}" alt="${item.name}"
+									style="width: 150px; height: 160px; object-fit: cover;border-radius: 15px;">
+								<img th:if="${item.logo == null}" src="https://via.placeholder.com/150" class="h-auto"
+									style="width: 150px; height: 160px; object-fit: cover;border-radius: 15px;">
+								<div class="card-body card-body-custom">
+									<h5 class="card-title card-title-custom" th:text="${item.name}"></h5>
+									<p class="card-text card-text-custom" th:text="${item.address}" style="color:#666">
+									</p>
+									<!--                        <p class="discount">Giảm 10%</p>-->
+									<div class="d-flex justify-content-between align-items-center">
+										<div>
+											<span class="price" th:text="' ' + ${item.price} + ' $/People'"></span>
+											<p class="favorite-card-text mb-0 text-danger mx-2" th:if="${item.discount > 0}"
+																			th:text="${'(-' + item.discount + '% )'}"></p>
+										</div>
+										<span class="distance"></span>
+									</div>
+									<a th:href="@{/restaurant-{id}.html(id=${item.id})}"
+										class="btn btn-custom">Booking</a>
+								</div>
+							</a>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</div>
+		<div th:replace="pages/fe/components/_inc_footer :: fe-footer"></div>
+	</div>
+
+	<!-- Bootstrap Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWKH9aCBn3ZOf_KFtieDNFSLRGNt6tvgI"></script>
+	<script>
+		function initMap() {
+			var lat = parseFloat([[${data.latitude}]]); // Convert to float
+			var lng = parseFloat([[${data.longitude}]]); // Convert to float
+
+			if (!isNaN(lat) && !isNaN(lng)) {
+				var restaurantLocation = {lat: lat, lng: lng};
+
+				// Tạo bản đồ mới
+				var map = new google.maps.Map(document.getElementById('map'), {
+					zoom: 15,
+					center: restaurantLocation
+				});
+
+				// Sử dụng AdvancedMarkerElement thay vì Marker
+				const marker = new google.maps.marker.AdvancedMarkerElement({
+					position: restaurantLocation,
+					map: map
+				});
+			} else {
+				console.error("Invalid latitude or longitude values.");
+			}
+		}
+
+		document.addEventListener('DOMContentLoaded', initMap);
+		
+		
+		document.getElementById('bookingForm').addEventListener('submit', function(event) {
+		  // Ngăn form gửi đi nếu không hợp lệ
+		  event.preventDefault();
+		
+		  // Lấy giá trị thời gian từ thẻ strong
+		  var workTimeOpen = document.getElementById('workTimeOpen').textContent.trim();
+		  var workTimeClose = document.getElementById('workTimeClose').textContent.trim();
+		  var timeDataBooking = document.getElementById('timeDataBooking').value;
+		
+		  // Chuyển đổi thời gian từ chuỗi thành đối tượng Date
+		  var openTime = new Date('1970-01-01T' + workTimeOpen + ':00');
+		  var closeTime = new Date('1970-01-01T' + workTimeClose + ':00');
+		  var bookingTime = new Date('1970-01-01T' + timeDataBooking + ':00');
+		
+		  // Kiểm tra thời gian đặt chỗ
+		  if (bookingTime >= openTime && bookingTime <= closeTime) {
+		    // Thời gian hợp lệ, có thể gửi form
+		    alert('Booking successful!');
+		    // Thực hiện gửi form hoặc hành động khác
+		    this.submit();
+		  } else {
+		    // Thời gian không hợp lệ, hiển thị thông báo lỗi
+		    document.getElementById('error-message').textContent = 
+		      'Sorry, the store is not open for your selected time slot. Choose another time slot.';
+		  }
+		});
+
+	</script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<head th:fragment="fe-head" xmlns:th="http://www.w3.org/1999/xhtml">
+    <meta charset="utf-8" />
+    <title>JOB - HOME</title>
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+            content="Tailwind Multipurpose Admin & Dashboard Template"
+            name="description"
+    />
+    <meta content="" name="Themesbrand" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" th:href="@{/fe/images/favicon.ico}"/>
+    <link th:href="@{/fe/libs/choices.js/public/assets/styles/choices.min.css}" rel="stylesheet" />
+    <link th:href="@{/fe/libs/swiper/swiper-bundle.min.css}" rel="stylesheet" />
+    <link th:href="@{/fe/css/icons.css}" rel="stylesheet" />
+    <link th:href="@{/fe/css/tailwind.css}" rel="stylesheet" />
+    <link th:href="@{/fe/css/icons.css}" rel="stylesheet" />
+    <style>
+        .breadcrumb-customer {
+            margin-top: 100px;
+            padding: 10px 0;
+        }
+        .breadcrumb-customer li a, .breadcrumb-customer li {
+            text-transform: capitalize;
+        }
+        .h-50-px {height: 55px}
+        .w-50-px {width: 55px}
+        .active-favorite {
+            background: #dc2627 !important;
+            color: white !important;
+        }
+
+        .customer-btn {
+            padding: 5px !important;
+            font-size: 14px;
+        }
+        #customers-table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        #customers-table th {
+            background-color: #ddd;
+            color: #000 !important;
+        }
+        #customers td, #customers th {
+          border: 1px solid #ddd;
+          padding: 8px;
+        }
+
+        #customers-table tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers-table tr:hover {background-color: #ddd;}
+
+        #customers-table th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          text-align: left;
+          color: white;
+        }
+    </style>
+</head>

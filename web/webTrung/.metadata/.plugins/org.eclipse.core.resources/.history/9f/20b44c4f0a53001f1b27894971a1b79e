@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head  th:replace="admin/layouts/head :: head" />
+<body class="sb-nav-fixed">
+<div th:replace="admin/layouts/nav :: nav" />
+<div id="layoutSidenav">
+    <div th:replace="admin/layouts/sidebar :: sidebar" />
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <div class="d-flex mt-4 mb-4 justify-content-between align-items-center">
+                    <h2 class="mt-4">User</h2>
+<!--                    <a href="/admin/user/create" class="btn btn-sm btn-primary">Add</a>-->
+                </div>
+                <div class="card mb-4">
+
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        Manage user
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="datatablesSimple">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th class="text-nowrap">Full Name</th>
+                                        <th>Email</th>
+                                        <th class="text-nowrap">Username</th>
+                                        <th class="text-nowrap">Phone</th>
+                                        <th class="text-nowrap">Gender</th>
+                                        <th class="text-nowrap">User type</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th class="text-nowrap">Full Name</th>
+                                        <th>Email</th>
+                                        <th class="text-nowrap">Username</th>
+                                        <th class="text-nowrap">Phone</th>
+                                        <th class="text-nowrap">Gender</th>
+                                        <th class="text-nowrap">User type</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    <tr th:each="item : ${lists}">
+                                        <td th:text="${item.id}"></td>
+                                        <td th:text="${item.name}"></td>
+                                        <td th:text="${item.email}"></td>
+                                        <td th:text="${item.username}"></td>
+                                        <td th:text="${item.phone}"></td>
+                                        <td >
+                                            <p class="mb-0 " th:text="${item.gender}" > </p>
+
+                                        </td>
+                                        <td >
+                                            <p class=" mb-0" th:if="${item.type == 'RESTAURANT'}">
+                                                Restaurant Owner
+                                            </p>
+                                            <p class=" mb-0" th:if="${item.type == 'USER'}">
+                                               Customer
+                                            </p>
+                                            <p class=" mb-0" th:if="${item.type == 'ADMIN'}">
+                                                Admin
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div th:replace="admin/layouts/footer :: footer"></div>
+    </div>
+</div>
+<div th:replace="admin/layouts/script :: script"></div>
+</body>
+</html>

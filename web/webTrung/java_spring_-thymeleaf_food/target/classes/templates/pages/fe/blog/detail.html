@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
+
+    <title>Blog Detail</title>
+    <link rel="stylesheet" th:href="@{/css/style_fe.css}">
+</head>
+<body>
+<div class="main">
+    <div th:replace="pages/fe/components/_inc_nav :: fe-nav" th:with="categories"></div>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-sm-8">
+                <h1 style="color:#d02028;font-size:25px">15 mẫu nhà 2 phòng ngủ đẹp khiến vạn người mê</h1>
+                <p style="color:#757575;font-size: 16px">Ngày cập nhật <span>06/06/2024</span></p>
+                <div>
+                    Tầm quan trọng của tháp dinh dưỡng cân đối
+
+                    Dù bạn làm ngành nghề gì, ở đâu hay có độ tuổi như thế nào thì tháp dinh dưỡng đều đóng vai trò cực kỳ quan trọng trong việc thiết lập và duy trì thói quen ăn uống lành mạnh và cân bằng cho bạn.
+
+                    Giúp cải thiện thói quen ăn uống
+
+                    Nhiều người muốn có chế độ ăn uống tốt hơn nhưng không biết bắt đầu từ đâu. Tháp dinh dưỡng sẽ hướng dẫn cho bạn loại thức ăn nào cần ăn nhiều hơn và thức ăn nào phải cắt giảm.
+                    Ngoài ra, bên cạnh tháp dinh dưỡng, đĩa ăn dinh dưỡng cũng khuyến khích bạn ăn nhiều trái cây và rau quả, vì biểu tượng thực phẩm được chia thành bốn phần chính, với một phần tư trái cây và một phần tư cho rau.
+
+                    Nhắc nhở bạn ăn uống lành mạnh
+
+                    Bạn hãy in hình ảnh tháp dinh dưỡng hoặc đĩa ăn dinh dưỡng và dán lên tủ lạnh trong nhà bếp, đâu đó tại văn phòng hoặc ở nơi bạn thường xuyên thấy nó. Điều đó có thể khuyến khích bạn ăn uống lành mạnh, nhắc nhở bạn về những loại thực phẩm bạn đã ăn và những thứ bạn cần bao gồm trong bữa ăn tiếp theo. Ví dụ như nếu bữa ăn sáng của bạn chưa có sữa, tháp dinh dưỡng hoặc đĩa ăn dinh dưỡng sẽ nhắc nhở bạn nên có một bữa ăn nhẹ như sữa chua hoặc bao gồm sữa ít chất béo khi ăn bữa trưa
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="article-card">
+                    <img src="https://via.placeholder.com/150" alt="Article Image">
+                    <div>
+                        <div class="title">
+                            <a href="">Khám Phá Nhà Hàng Haidilao Bitexco - Thiên Đường Ẩm Thực Trung Tâm Quận 1</a>
+                        </div>
+                        <div class="date">18/06/2024</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="pages/fe/components/_inc_footer :: fe-footer"></div>
+</div>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

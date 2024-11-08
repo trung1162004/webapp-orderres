@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
+
+    <title>Food</title>
+    <link rel="stylesheet" th:href="@{/css/style_fe.css}">
+</head>
+<body>
+<div class="main">
+    <div th:replace="pages/fe/components/_inc_nav :: fe-nav" th:with="categories"></div>
+    <div th:replace="pages/fe/components/_inc_category_home :: inc-category-home" th:with="categories"></div>
+    <div class="container my-5 box-restaurant">
+        <div class="d-flex justify-content-between">
+            <div>
+                <h4 class="text-left">Fresh and delicious SEAFOOD BUFFET delivered to your table. Enjoy now</h4>
+                <p class="text-left">The menu has many delicious dishes from shrimp, crab, clams, snails, crabs,... many prices. Some restaurants also have lobster and crab.</p>
+            </div>
+            <div class="text-end">
+                <a href="/category" class="text-danger">See all</a>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="pages/fe/components/restaurants/_inc_restaurant_home :: inc-restaurant-home" th:with="restaurants"></div>
+    <div th:replace="pages/fe/components/_inc_footer :: fe-footer"></div>
+</div>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

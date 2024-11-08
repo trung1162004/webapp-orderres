@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="admin/layouts/head :: head"/>
+<body class="sb-nav-fixed">
+<div th:replace="admin/layouts/nav :: nav"/>
+<div id="layoutSidenav">
+    <div th:replace="admin/layouts/sidebar :: sidebar"/>
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <div class="d-flex mt-4 mb-4 justify-content-between align-items-center">
+                    <h2>Add new User</h2>
+                    <a href="/admin/user" class="btn btn-sm btn-danger">Back</a>
+                </div>
+                <p class="alert alert-danger w-100" role="alert" th:if="${messageError != ''}" th:text="${messageError}"></p>
+
+                <form th:action="@{/admin/user/create}" method="POST" autocomplete="off" th:object="${user}">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="form-group col-md-6 col-12 mb-4">
+                                    <label for="name" class="mb-2">Full Name</label>
+                                    <input type="text" class="form-control" id="name" aria-describedby="emailHelp" required
+                                           placeholder="Enter value" th:field="*{name}">
+                                </div>
+                                <div class="form-group col-md-6 col-12 mb-4">
+                                    <label for="username" class="mb-2">Username</label>
+                                    <input type="text" class="form-control" id="username" aria-describedby="emailHelp" required
+                                           placeholder="Enter value" th:field="*{username}">
+                                </div>
+                                <div class="form-group col-md-6 col-12 mb-4">
+                                    <label for="email" class="mb-2">Email</label>
+                                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" required
+                                           placeholder="Email" th:field="*{email}">
+                                </div>
+                                <div class="form-group col-md-6 col-12 mb-4">
+                                    <label for="password" class="mb-2">Password</label>
+                                    <input type="password" class="form-control" id="password" aria-describedby="emailHelp" required
+                                           placeholder="Enter value" th:field="*{password}">
+                                </div>
+                                <div class="form-group col-md-6 col-12 mb-4">
+                                    <label for="phone" class="mb-2">Phone</label>
+                                    <input type="text" class="form-control" id="phone" aria-describedby="emailHelp"
+                                           placeholder="Enter value" th:field="*{phone}">
+                                </div>
+                                <div class="form-group mb-4 col-md-6 col-12">
+                                    <label for="type" class="mb-2">User type</label>
+                                    <select class="form-control" id="type" th:field="*{type}" required>
+                                        <option value="">Select value</option>
+                                        <option value="ADMIN">ADMIN</option>
+                                        <option value="USER">Customer</option>
+                                        <option value="RESTAURANT">Restaurant owner</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-12 mb-4">
+                                    <label for="address" class="mb-2">Address</label>
+                                    <input type="text" class="form-control" id="address" aria-describedby="emailHelp"
+                                           placeholder="Enter value" th:field="*{address}">
+                                </div>
+
+<!--                                <div class="form-group mb-4 col-md-6 col-12">-->
+<!--                                    <label for="status" class="mb-2">Status</label>-->
+<!--                                    <select class="form-control" id="status" th:field="*{status}" required>-->
+<!--                                        <option value="">Enter value</option>-->
+<!--                                        <option value="ACTIVE">Active</option>-->
+<!--                                        <option value="INACTIVE">Inactive</option>-->
+<!--                                    </select>-->
+<!--                                </div>-->
+                                <div class="form-group mb-4 col-md-6 col-12">
+                                    <label for="gender" class="mb-2">Gender</label>
+                                    <select class="form-control" id="gender" th:field="*{gender}">
+                                        <option value="">Select value</option>
+                                        <option value="MALE">MALE</option>
+                                        <option value="FEMALE">FEMALE</option>
+                                        <option value="OTHER">OTHER</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </main>
+        <div th:replace="admin/layouts/footer :: footer"></div>
+    </div>
+</div>
+<div th:replace="admin/layouts/script :: script"></div>
+</body>
+</html>

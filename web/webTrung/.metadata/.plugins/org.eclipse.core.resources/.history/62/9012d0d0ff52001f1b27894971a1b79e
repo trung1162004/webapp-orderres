@@ -1,0 +1,41 @@
+spring.application.name=web
+spring.datasource.url=jdbc:mysql://localhost:3306/res_foodv1
+spring.datasource.username=root
+spring.datasource.password=trung116
+server.port=3013
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+logging.level.org.hibernate.type=TRACE
+spring.jpa.hibernate.ddl-auto=update
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+spring.jpa.properties.hibernate.show_sql=true
+logging.level.org.hibernate.SQL=DEBUG
+logging.level.root=INFO
+logging.level.org.springframework=INFO
+
+spring.servlet.multipart.max-file-size=50MB
+spring.servlet.multipart.max-request-size=50MB
+spring.main.allow-circular-references=true
+
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=lvtotnghiep123@gmail.com
+spring.mail.password=rhgtundlonwrkhpa
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+
+
+application.security.jwt.secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+application.security.jwt.expiration: 86400000 
+application.security.jwt.refresh-token.expiration: 604800000
+
+#paypal
+paypal.client.id=AW8D9LxDyHCmn6xZiGtFkKvFmsEARGVOBfIze2DjiaX3eKFFBX7gjYHW61Ai92MF-9GCZPJvULSb9XpT
+paypal.client.secret=ELRVWYZmLmoog975X4F78s_Fn34K8DaZ7Fdo5Bzj2vsXVbgElPr7ljZ-VTv3ae3KGfPZ_BVziKthRot_
+paypal.mode=sandbox
+# application.properties
+paypal.success.url=http://localhost:3013/paypal/success
+paypal.cancel.url=http://localhost:8080/cancel
+spring.main.allow-bean-definition-overriding=true
+spring.thymeleaf.cache=false
+spring.thymeleaf.prefix=classpath:/templates/
+spring.thymeleaf.suffix=.html

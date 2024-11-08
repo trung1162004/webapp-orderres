@@ -1,0 +1,79 @@
+<div th:fragment="fe-nav" xmlns:th="http://www.w3.org/1999/xhtml">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/">Eat&Eat</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item" th:each="item : ${categoriesGlobal}">
+                        <a class="nav-link active" th:if="${category != null && category.id == item.id}" aria-current="page" th:href="@{/category/{id}(id=${item.id})}" th:text="${item.name}"></a>
+                        <a class="nav-link" th:if="${(category != null && category.id != item.id) || category == null}"  aria-current="page" th:href="@{/category/{id}(id=${item.id})}" th:text="${item.name}"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" th:if="${type == 'RESTAURANT'}" aria-current="page" href="/restaurant">Restaurant</a>
+                        <a class="nav-link"  th:if="${type != 'RESTAURANT'}" aria-current="page" href="/restaurant">Restaurant</a>
+                    </li>
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link active" th:if="${type == 'HOT-RESTAURANT'}" aria-current="page" href="/hot-restaurant.html">Hot restaurant</a>-->
+<!--                        <a class="nav-link"  th:if="${type != 'HOT-RESTAURANT'}" aria-current="page" href="/hot-restaurant.html">Hot restaurant</a>-->
+<!--                    </li>-->
+                    <li class="nav-item">
+                        <a class="nav-link active" th:if="${type == 'DISCOUNT-RESTAURANT'}" aria-current="page" href="/discount-restaurant.html">Super deals</a>
+                        <a class="nav-link"  th:if="${type != 'DISCOUNT-RESTAURANT'}" aria-current="page" href="/discount-restaurant.html">Hot sales</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" th:if="${type == 'BLOG'}" aria-current="page" href="/blog">Blog</a>
+                        <a class="nav-link"  th:if="${type != 'BLOG'}" aria-current="page" href="/blog">Blog</a>
+                    </li>
+                </ul>
+<!--                <div class="d-flex align-items-center" sec:authorize="isAuthenticated()">-->
+<!--                    <a class="nav-link" href="#">-->
+<!--                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">-->
+<!--                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-7 8a7 7 0 1 1 14 0H1z"/>-->
+<!--                        </svg>-->
+<!--                        Xin chào <span th:if="${user == null}" sec:authentication="name"></span>-->
+<!--                    </a>-->
+<!--                </div>-->
+                <div class="d-flex align-items-center dropdown" sec:authorize="isAuthenticated()">
+                    <a class="nav-link btn btn-custom me-4"  style="padding: 5px 15px;" aria-current="page" href="/cooperate"
+                       th:if="${user != null && user.type.equals('RESTAURANT')}">
+                        Cooperate
+                    </a>
+
+                    <a class="nav-link p-0 text-white dropdown-toggle" href="#"
+                       id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        <img th:if="${user == null || (user != null && user.avatar == null)}" src="/images/default.jpg" alt="" style="width: 35px;height: 35px;border-radius: 50%;object-fit: cover">
+                        <img th:if="${user != null && user.avatar != null}" src="/images/default.jpg"
+                             th:src="@{'/images/'+${user.avatar}}" alt="" style="width: 35px;height: 35px;border-radius: 50%;object-fit: cover">
+                        <span th:if="${user == null}" sec:authentication="name" class="text-success"></span>
+                        <span th:if="${user != null}"  class="text-success" th:text="${user.name}"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item my-1" href="/admin" th:if="${user != null && user.type.equals('ADMIN')}">Manage System</a></li>
+                        <li><a class="dropdown-item my-1" href="/update-info.html">Account Information</a></li>
+                        <li><a class="dropdown-item my-1" href="/update-password.html">Password Management</a></li>
+                        <li><a class="dropdown-item my-1" href="/booking-history.html">Bookings History</a></li>
+						<li><a class="dropdown-item my-1" href="/profile2.html">Packet History</a></li>
+
+                        <li><a class="dropdown-item my-1" th:if="${user != null && user.type.equals('RESTAURANT')}" href="/manage-restaurant.html">Manage Restaurant</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item my-1" href="/logout">
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="d-flex align-items-center" sec:authorize="isAnonymous()">
+                    <a class="nav-link" href="/login.html">
+                        <img src="images/default.jpg" class="border" alt="" style="width: 35px;height: 35px;border-radius: 50%;object-fit: cover">
+                        <span class="text-danger">SignIn</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>

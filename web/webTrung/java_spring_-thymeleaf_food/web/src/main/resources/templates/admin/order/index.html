@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="admin/layouts/head :: head"/>
+<body class="sb-nav-fixed">
+<div th:replace="admin/layouts/nav :: nav" />
+<div id="layoutSidenav">
+    <div th:replace="admin/layouts/sidebar :: sidebar"/>
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <div class="d-flex mt-4 mb-4 justify-content-between align-items-center">
+                    <h2 >Order</h2>
+                </div>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                       <span >Manage Order</span>
+                    </div>
+                    <div class="card-body ">
+                        <div class="table-responsive">
+                            <table id="datatablesSimple">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Code</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+									<!--      <th>Address</th>
+                                   <th>Total price</th>-->
+                                    <th>Restaurant</th>
+                                    <th>Status</th>
+                                    <th>Time booking</th>
+                                    <th>Created time</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Code</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+									<!--  <th>Address</th>
+                                    <th>Total price</th>-->
+                                    <th>Restaurant</th>
+                                    <th>Status</th>
+                                    <th>Time booking</th>
+                                    <th>Created time</th>
+                                    <th>Action</th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+
+                                <tr th:each="item : ${lists}">
+                                    <td th:text="${item.id}"></td>
+                                    <td th:text="${item.code}"> </td>
+                                    <td th:text="${item.receiverName}"></td>
+                                    <td th:text="${item.receiverEmail}"></td>
+                                    <td th:text="${item.receiverPhone}"></td>
+									<!-- <td th:text="${item.receiverAddress}"></td>
+                                    <td th:text="'$' + ${#numbers.formatDecimal(item.totalPrice, 1, 'COMMA', 2, 'POINT')}" ></td>-->
+                                    <td th:text="${item.restaurantName}" ></td>
+                                    <td  >
+                                        <span th:if="${item.status == 'PENDING'}" class="text-warning">PENDING</span>
+                                        <span th:if="${item.status == 'APPROVED'}" class="text-success">Approved</span>
+                                        <span th:if="${item.status == 'REJECTED'}" class="text-danger">REJECTED</span>
+                                    </td>
+                                    <td class="align-middle text-nowrap" >
+                                        <span class="text-nowrap align-middle" th:text="${#temporals.format(item.timeBooking, 'dd/MM/YYYY HH:mm')}"></span>
+                                    </td>
+                                    <td class="align-middle text-nowrap" >
+                                        <span class="text-nowrap align-middle" th:text="${#dates.format(item.createdAt, 'dd/MM/YYYY')}"></span>
+                                    </td>
+                                    <td>
+                                        <a  th:href="@{/admin/order/edit/{id}(id=${item.id})}" class="btn btn-success btn-sm">Edit</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div th:replace="admin/layouts/footer :: footer"></div>
+    </div>
+</div>
+<div th:replace="admin/layouts/script :: script"></div>
+</body>
+</html>

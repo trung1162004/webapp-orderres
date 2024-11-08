@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="admin/layouts/head :: head"/>
+<body class="sb-nav-fixed">
+<div th:replace="admin/layouts/nav :: nav" />
+<div id="layoutSidenav">
+    <div th:replace="admin/layouts/sidebar :: sidebar"/>
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <div class="d-flex mt-4 mb-4 justify-content-between align-items-center">
+                    <h2>Add new cooperation</h2>
+                    <a href="/admin/cooperation" class="btn btn-sm btn-danger">Back</a>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <p class="alert alert-danger w-100 mb-5" role="alert" th:if="${messageError != ''}" th:text="${messageError}"></p>
+
+                                <form th:action="@{/admin/cooperation/create}" method="POST" autocomplete="off" th:object="${data}">
+                                    <div class="row">
+                                        <div class="form-group mb-4 col-md-6 col-12 required">
+                                            <label for="name" class="mb-2 form-label">Name</label>
+                                            <input type="text" class="form-control" id="name"
+                                                   aria-describedby="emailHelp" required placeholder="Enter value" th:field="*{name}">
+                                        </div>
+                                        <div class="form-group mb-4 col-md-6 col-12 required">
+                                            <label  class="mb-2 form-label">Owner</label>
+                                            <select class="form-control" th:field="*{user}" required>
+                                                <option value="">Select value</option>
+                                                <option th:each="item : ${users}"
+                                                        th:if="${item != null && item.status == 'ACTIVE'}"
+                                                        th:value="${item.id}"
+                                                        th:text="${item.name}"
+                                                ></option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group mb-4 col-md-6 col-12 required">
+                                            <label class="mb-2 form-label"  for="email">Email</label>
+                                            <input type="email" class="form-control" id="email"
+                                                   aria-describedby="emailHelp" required placeholder="Email" th:field="*{email}">
+                                        </div>
+
+                                        <div class="form-group mb-4 col-md-6 col-12 required">
+                                            <label class="mb-2 form-label" for="phone">Phone</label>
+                                            <input type="text" class="form-control" id="phone"
+                                                   aria-describedby="emailHelp" required placeholder="Phone" th:field="*{phone}">
+                                        </div>
+
+                                        <div class="form-group mb-4 col-md-6 col-12 required">
+                                            <label  class="mb-2 form-label">Status</label>
+                                            <select class="form-control" th:field="*{status}" required>
+                                                <option value="">Select value</option>
+                                                <option value="PENDING">Pending</option>
+                                                <option value="APPROVED">Approved</option>
+                                                <option value="REJECTED">Rejected</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group mb-4 col-md-6 col-12 required">
+                                            <label  class="mb-2 form-label">Service pack</label>
+                                            <select class="form-control " id="gender" th:field="*{service_type}">
+                                                <option value="">Select value</option>
+                                                <option value="1">500$ 3 month</option>
+                                                <option value="2">1000$ 8 month</option>
+                                                <option value="3">1200$ 12 month</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group mb-4 col-12">
+                                            <label class="mb-2" for="description">Description</label>
+                                            <textarea type="text" class="form-control" id="description"
+                                                      rows="3"
+                                                      aria-describedby="emailHelp" placeholder="Mô tả" th:field="*{description}">
+                                            </textarea>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div th:replace="admin/layouts/footer :: footer"></div>
+    </div>
+</div>
+<div th:replace="admin/layouts/script :: script"></div>
+</body>
+</html>

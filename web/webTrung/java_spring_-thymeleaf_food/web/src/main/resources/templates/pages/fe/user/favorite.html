@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+    <title>Cập nhật thông tin</title>
+    <link rel="stylesheet" th:href="@{/css/style_fe.css}">
+</head>
+<body>
+<div class="main">
+    <div th:replace="pages/fe/components/_inc_nav :: fe-nav" th:with="user"></div>
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <!-- Sidebar -->
+            <div th:replace="pages/fe/user/inc_sidebar :: fe-user-sidebar" th:with="user,totalCooperation"></div>
+            <!-- Main content -->
+            <div class="col-md-9">
+                <h3 class="mb-4">List favourite</h3>
+                <div class="row">
+                    <div class="col-md-4" th:each="item : ${dataList}" th:if="${item.restaurant != null}">
+                        <div class="favorite-card">
+                            <a th:href="@{/restaurant-{id}.html(id=${item.restaurant.getId()})}">
+                                <img th:if="${item.restaurant.getLogo() != null}"  th:src="@{'/images/'+${item.restaurant.getLogo()}}" alt="${item.r}" style="width: 150px; height: 150px; object-fit: cover">
+                                <img th:if="${item.restaurant.getLogo() == null}" src="https://via.placeholder.com/150" alt="Favorite Item">
+                            </a>
+                            <div class="favorite-card-body">
+                                <a th:href="@{/restaurant-{id}.html(id=${item.restaurant.getId()})}">
+                                    <h5 class="favorite-card-title" th:text="${item.restaurant.getName()}">Buffet Cửu Vân Long Premium</h5>
+                                </a>
+                                <p class="favorite-card-text">
+                                    <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                                    <span class="ms-2" th:text="${item.restaurant.getPrice()}"></span>
+                                </p>
+                                <p class="favorite-card-text" th:text="${item.restaurant.getAddress()}">Tầng 4, Tòa nhà Bitexco Financial Tower</p>
+                            </div>
+                            <div class="favorite-card-footer">
+                                <a th:href="@{/restaurant-favorite/{id}(id=${item.restaurant.getId()})}" class="btn btn-danger ">
+                                    <i class="fas fa-heart"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Thêm các mục khác ở đây -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="pages/fe/components/_inc_footer :: fe-footer"></div>
+</div>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

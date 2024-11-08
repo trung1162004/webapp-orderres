@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: doan._java_food.ApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.711 s -- in doan._java_food.ApplicationTests

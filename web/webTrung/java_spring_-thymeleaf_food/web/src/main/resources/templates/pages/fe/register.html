@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+    <title>Register</title>
+    <link rel="stylesheet" th:href="@{/css/style_fe.css}">
+</head>
+<body>
+<div class="main">
+    <div th:replace="pages/fe/components/_inc_nav :: fe-nav"></div>
+    <div class="container mt-5 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="text-center mb-4">Register</h2>
+
+                <div class="mt-3 text-center" role="alert" th:if="${messageSuccess != null && !messageSuccess.equals('')}"
+                   >
+                    <p class="alert alert-success" style="color: #2bc812;">
+                        Register successfully! Please check your email to activate your account.
+                    </p>
+                    <img src="images/success.png" class="w-auto h-auto text-center"/>
+                </div>
+                <div class="mt-3" th:if="${messageSuccess == null}">
+                    <p class="alert alert-danger" th:if="${messageError != null}" th:text="${messageError}"></p>
+                    <form class="needs-validation" method="POST" autocomplete="off" th:action="@{/register.html}" th:object="${user}" id="myForm">
+                        <div class="mb-3">
+                            <label for="registerName" class="form-label">Name</label>
+                            <input type="text" name="name" class="form-control" id="registerName" th:field="*{name}" >
+                            <div class="invalid-feedback">
+                                Please enter your name.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerUsername" class="form-label">Username</label>
+                            <input type="text" name="username" class="form-control" id="registerUsername" th:field="*{username}">
+                            <div class="invalid-feedback">
+                                Please enter your username.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPhone" class="form-label">Phone</label>
+                            <input type="text" name="phone" class="form-control" id="registerphone" th:field="*{phone}">
+                            <div class="invalid-feedback">
+                                Please enter your phone number.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email address</label>
+                            <input type="email" name="email" class="form-control" id="registerEmail" th:field="*{email}">
+                            <div class="invalid-feedback">
+                                Please enter your email.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Password</label>
+                            <input type="password" name="password" class="form-control" id="registerPassword" th:field="*{password}">
+                            <div class="invalid-feedback">
+                                Please enter your password.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerType" class="form-label">Type</label>
+                            <select name="type" class="form-control" id="registerType" th:field="*{type}">
+                                <option value="USER">Customer</option>
+                                <option value="RESTAURANT">Owner</option>
+                                <!--                            <option value="ADMIN" >ADMIN</option>-->
+                            </select>
+                            <div class="invalid-feedback">
+                                Please enter your type.
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                        <p class="mt-2">You have an account but forgot your password, <a href="/forgot-password">Click here</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="pages/fe/components/_inc_footer :: fe-footer"></div>
+</div>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js" crossorigin="anonymous"></script>
+<script th:src="@{/js/main.js}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $.validator.addMethod("noNumbersOrSpecialChars", function(value, element) {
+            return this.optional(element) || /^[a-zA-Z\s]+$/.test(value);
+        }, "Please enter only letters.");
+
+        $.validator.addMethod("validPhone", function(value, element) {
+            return this.optional(element) || /^[0-9]{8,10}$/.test(value);
+        }, "Please enter a valid phone number.");
+
+        $.validator.addMethod("validEmail", function(value, element) {
+            return this.optional(element) || /^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(value);
+        }, "Please enter a valid Gmail address.");
+
+        $.validator.addMethod("validPassword", function(value, element) {
+            return this.optional(element) || /^(?=.*[a-z])(?=.*[A-Z])[A-Za-z\d]{8,15}$/.test(value);
+        }, "Password must be 8-15 characters long and include at least one uppercase and one lowercase letter.");
+
+        $("#myForm").validate({
+            rules: {
+                username: {
+                    required: true,
+                    minlength: 2,
+                    noNumbersOrSpecialChars: true
+                },
+                password: {
+                    required: true,
+                    validPassword: true
+                },
+                email: {
+                    required: true,
+                    validEmail: true
+                },
+                name: {
+                    required: true,
+                    noNumbersOrSpecialChars: true
+                },
+                phone: {
+                    required: true,
+                    validPhone: true
+                }
+            },
+            messages: {
+                username: {
+                    required: "Please enter your username.",
+                    minlength: "Your username must be at least 2 characters long.",
+                    noNumbersOrSpecialChars: "Username must not contain numbers or special characters."
+                },
+                password: {
+                    required: "Please provide a password.",
+                    validPassword: "Password must be 8-15 characters long and include at least one uppercase and one lowercase letter."
+                },
+                email: {
+                    required: "Please enter your email address.",
+                    validEmail: "Please enter a valid Gmail address."
+                },
+                name: {
+                    required: "Please enter your name.",
+                    noNumbersOrSpecialChars: "Name must not contain numbers or special characters."
+                },
+                phone: {
+                    required: "Please enter your phone number.",
+                    validPhone: "Please enter a valid phone number (8-10 digits, no letters or special characters)."
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

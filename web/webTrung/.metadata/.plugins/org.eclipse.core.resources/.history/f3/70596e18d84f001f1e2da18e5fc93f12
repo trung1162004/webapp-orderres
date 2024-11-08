@@ -1,0 +1,253 @@
+a {
+text-decoration: none;
+}
+.navbar {
+background-color: #fff !important; /* Background color for the navbar */
+border-bottom: 1px solid #eaeaea !important; /* Bottom border for separation */
+}
+.navbar-light .navbar-brand {
+color: #f00; /* Color for the brand name */
+font-weight: bold; /* Bold font for the brand name */
+}
+.navbar-nav .nav-link {
+color: #000; /* Color for the links */
+}
+.navbar-nav .nav-link:hover {
+color: #f00; /* Hover color for the links */
+}
+.navbar-nav .nav-link.active {
+color: #f00; /* Active link color */
+}
+.navbar-nav .dropdown-menu {
+border-radius: 0; /* Remove border radius from dropdown */
+}
+
+.box-restaurant .category-item {
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+}
+.box-restaurant .category-item img {
+width: 80px;
+height: 80px;
+border-radius: 50%;
+border: 3px solid #dedede66;
+transition: all .25s ease;
+object-fit: scale-down;
+}
+
+.box-restaurant  .item img {
+border-radius: 15px;
+}
+.box-restaurant .item h5 {
+font-size: 1rem;
+font-weight: bold;
+margin-top: 10px;
+overflow: hidden;
+text-overflow: ellipsis;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+color: #333;
+display: -webkit-box;
+}
+.box-restaurant-v2 .item h5.card-title {
+-webkit-line-clamp: 2;
+height: 40px;
+}
+.box-restaurant .item p {
+color: #f00;
+font-weight: bold;
+}
+
+.box-restaurant-v2 .item p {
+color: #333;
+font-size: 14px;
+font-weight: 400;
+}
+
+footer {
+background: #f8f9fa;
+color: #343a40;
+}
+
+footer a {
+color: #343a40;
+text-decoration: none;
+}
+
+footer a:hover {
+text-decoration: underline;
+}
+
+.card-custom {
+border: none;
+border-radius: 10px;
+display: flex;
+flex-direction: row;
+}
+.card-img-left {
+width: 150px;
+height: 150px;
+object-fit: cover;
+border-top-left-radius: 10px;
+border-bottom-left-radius: 10px;
+}
+.card-body-custom {
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.card-title-custom {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #000;
+    font-size: 16px;
+}
+.card-text-custom {
+font-size: 0.9rem;
+}
+.discount {
+color: red;
+font-weight: bold;
+}
+.rating {
+color: #ffc107;
+font-size: 1rem;
+}
+
+.distance {
+font-size: 0.9rem;
+color: gray;
+}
+.btn-custom {
+    background-color: white;
+    border-color: #dc3545;
+    color: #dc3545;
+    border-radius: 10px;
+    font-weight: bold;
+}
+.keyword-links a {
+color: blue;
+margin-right: 10px;
+text-decoration: none;
+}
+
+.badge {
+display: inline-block;
+padding: 0.25em 0.4em;
+font-size: 75%;
+font-weight: 700;
+line-height: 1;
+text-align: center;
+white-space: nowrap;
+vertical-align: baseline;
+border-radius: 0.25rem;
+}
+
+/* Specific styles for info badge */
+.badge-info {
+color: #fff;
+background-color: rgba(23, 162, 184, 0.6);
+}
+.list-group-item a {
+color: #333
+}
+.profile-img {
+width: 100%;
+height: 100px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-bottom: 10px;
+}
+.profile-img img {
+max-width: 100%;
+border-radius: 50%;
+}
+
+.error { color: red; margin-top: 5px}
+
+.article-card {
+    display: flex;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.article-card img {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 15px;
+    border-radius: 10px;
+}
+.article-card .date {
+    font-size: 0.9em;
+    color: #999;
+}
+.article-card .title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #000;
+}
+.article-card .description {
+    font-size: 0.95em;
+    color: #555;
+}
+
+.article-card .title a {
+    color: #222b45;
+}
+
+  .favorite-card {
+ border-radius: 8px;
+ overflow: hidden;
+ margin-bottom: 20px;
+}
+.favorite-card img {
+ width: 100%;
+ height: auto;
+}
+.favorite-card-body {
+ padding: 15px;
+}
+.favorite-card-title {
+ font-size: 1.25rem;
+ margin-bottom: 10px;
+ color: #000;
+     font-size: 16px;
+     height: 40px;
+}
+/*.page-item.disabled .page-link {*/
+/*    background: #827d7d !important;*/
+/*}*/
+.dropdown-menu.show {
+    z-index: 99999;
+}
+.favorite-card-text {
+         color: #666;
+         font-size: 0.9rem;
+     }
+     .favorite-card-footer {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: 10px 15px;
+     }
+     .favorite-card-footer .btn {
+         font-size: 0.9rem;
+     }
+
+
+ .sticky-top {
+             position: -webkit-sticky;
+             position: sticky;
+             top: 20px; /* Adjust this value as needed */
+         }
+         
+         .normal-text{
+	
+	font-weight: normal;
+}

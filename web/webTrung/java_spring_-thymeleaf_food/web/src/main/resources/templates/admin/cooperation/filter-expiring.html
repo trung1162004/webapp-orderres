@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="admin/layouts/head :: head" />
+</head>
+
+<body class="sb-nav-fixed">
+    <div th:replace="admin/layouts/nav :: nav" />
+    <div id="layoutSidenav">
+        <div th:replace="admin/layouts/sidebar :: sidebar" />
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <div class="d-flex mt-4 mb-4 justify-content-between align-items-center">
+                        <h2>List of Expiring Packages</h2>
+                        <a href="/admin/cooperation" class="btn btn-sm btn-primary">Back</a>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-table me-1"></i>
+                            <span>List of Expiring Packages</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <form action="#" method="post" th:action="@{/admin/cooperation/send-email}">
+                                    <button type="submit" class="btn btn-warning mb-3">Send email</button>
+                                </form>
+
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Service Pack</th>
+                                            <th>Price</th>
+                                            <th>Owner</th>
+                                            <th>Status</th>
+                                            <th>Time End</th>
+                                            <th>Time Create</th>
+                                            <th>Time Update</th>
+                                            <th>Email Sent</th> <!-- Cột mới để hiển thị trạng thái email -->
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Service Pack</th>
+                                            <th>Price</th>
+                                            <th>Owner</th>
+                                            <th>Status</th>
+                                            <th>Time End</th>
+                                            <th>Time Create</th>
+                                            <th>Time Update</th>
+                                            <th>Email Sent</th> <!-- Cột mới để hiển thị trạng thái email -->
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr th:each="item : ${lists}">
+                                            <td th:text="${item.id}"></td>
+                                            <td th:text="${item.name}"></td>
+                                            <td th:text="${item.email}"></td>
+                                            <td th:text="${item.phone}"></td>
+                                            <td>
+                                                <span th:if="${item.service_type == 1}">3 Months</span>
+                                                <span th:if="${item.service_type == 2}">8 Months</span>
+                                                <span th:if="${item.service_type == 3}">12 Months</span>
+                                            </td>
+                                            <td th:text="'$' + ${#numbers.formatDecimal(item.price, 1, 'COMMA', 2, 'POINT')}"></td>
+                                            <td>
+                                                <span th:if="${item.user != null}" th:text="${item.user.name}"></span>
+                                            </td>
+                                            <td>
+                                                <span th:if="${item.status == 'Still valid'}" class="badge text-bg-success font-weight-bold" th:text="${item.status}"></span>
+                                                <span th:if="${item.status == 'PENDING'}" class="badge text-bg-warning font-weight-bold" th:text="${item.status}"></span>
+                                                <span th:if="${item.status == 'Expired'}" class="badge text-bg-danger font-weight-bold" th:text="${item.status}"></span>
+                                            </td>
+                                            <td th:text="${#temporals.format(item.deadline, 'dd/MM/yyyy')}"></td>
+                                            <td th:text="${#dates.format(item.createdAt, 'dd/MM/yyyy')}"></td>
+                                            <td th:text="${#dates.format(item.updatedAt, 'dd/MM/yyyy')}"></td>
+                                            <td>
+                                                <span th:if="${item.emailSent}" class="badge text-bg-success">Sent</span>
+                                                <span th:unless="${item.emailSent}" class="badge text-bg-danger">Not Sent</span>
+                                            </td> <!-- Cột mới để hiển thị trạng thái email -->
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <div th:replace="admin/layouts/footer :: footer"></div>
+        </div>
+    </div>
+    <div th:replace="admin/layouts/script :: script"></div>
+</body>
+</html>

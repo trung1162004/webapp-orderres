@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Bootstrap CSS -->
+	   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+	   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" crossorigin="anonymous">
+
+    <title>Terms and Conditions for Restaurant Owners</title>
+	<link rel="stylesheet" th:href="@{/css/style_fe.css}">
+	
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+       
+        main {
+            width: 80%;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        h1 {
+            margin-bottom: 1.5rem;
+        }
+        h2 {
+            margin-top: 1.5rem;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        p, li {
+            margin-bottom: 1rem;
+        }
+        address {
+            font-style: normal;
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+	<div>
+	<div th:replace="pages/fe/components/_inc_nav :: fe-nav" th:with="user"></div>
+	<div class="container mt-5 mb-4">
+	       <div class="row text-center">
+	           <h4 class="mb-4">Terms and Conditions for Restaurant Owners</h4>
+	       </div>
+    <main>
+        <section>
+            <h2>Introduction</h2>
+            <p>By registering and using our website to list your restaurant and services, you agree to comply with and be bound by the following terms and conditions. Please review these terms carefully. If you do not agree with these terms, you should not register or use our services.</p>
+        </section>
+        <section>
+            <h2>Registration and Account</h2>
+            <ul>
+                <li><strong>Eligibility:</strong> You must be a registered business owner to list your restaurant on our website.</li>
+                <li><strong>Account Information:</strong> You agree to provide accurate and up-to-date information during the registration process and to update this information as necessary.</li>
+                <li><strong>Account Security:</strong> You are responsible for maintaining the confidentiality of your account login details and for all activities that occur under your account.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Listing and Services</h2>
+            <ul>
+                <li><strong>Restaurant Listing:</strong> You may create a profile for your restaurant, including menu items, pricing, and other relevant information. All information provided must be accurate and truthful.</li>
+                <li><strong>Content Ownership:</strong> You retain ownership of the content you post, but you grant us a license to use, display, and distribute this content on our platform.</li>
+                <li><strong>Compliance:</strong> Your listing must comply with all local laws and regulations, including health and safety standards.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Fees and Payments</h2>
+            <ul>
+                <li><strong>Subscription Plans:</strong> We offer different subscription plans with varying levels of service. Details and pricing are available on our website.</li>
+                <li><strong>Payment Terms:</strong> Payments for subscription plans are due in advance and are non-refundable. Payment methods accepted include credit/debit cards and other electronic payment methods.</li>
+                <li><strong>Taxes:</strong> You are responsible for any taxes applicable to your use of our services.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Conduct and Use</h2>
+            <ul>
+                <li><strong>Prohibited Activities:</strong> You may not engage in any activities that are illegal, harmful, or that violate the rights of others while using our services.</li>
+                <li><strong>Quality Standards:</strong> You agree to maintain high standards of quality and service for your restaurant as represented in your listing.</li>
+                <li><strong>Customer Interaction:</strong> You must handle all customer interactions, including reservations and disputes, professionally and courteously.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Termination</h2>
+            <ul>
+                <li><strong>Account Termination:</strong> We reserve the right to suspend or terminate your account at any time for any reason, including violation of these terms and conditions.</li>
+                <li><strong>Effect of Termination:</strong> Upon termination, your restaurant listing will be removed from our website, and you will not be entitled to any refund for prepaid services.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Liability and Indemnification</h2>
+            <ul>
+                <li><strong>Limitation of Liability:</strong> Our liability to you in connection with our services is limited to the amount you have paid for the relevant subscription period.</li>
+                <li><strong>Indemnification:</strong> You agree to indemnify and hold us harmless from any claims, damages, or expenses arising out of your use of our services or your violation of these terms and conditions.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Privacy</h2>
+            <ul>
+                <li><strong>Data Collection:</strong> We collect and process personal information in accordance with our Privacy Policy. This information is used for account management, marketing, and improving our services.</li>
+                <li><strong>Marketing Communications:</strong> By providing your contact information, you agree to receive marketing communications from us. You can opt-out at any time by following the instructions in the communication.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Amendments</h2>
+            <p>We reserve the right to amend these terms and conditions at any time. Changes will be effective immediately upon posting on our website. Continued use of our services after changes are made constitutes acceptance of the new terms.</p>
+        </section>
+        <section>
+            <h2>Contact Us</h2>
+            <address>
+                <p>If you have any questions or concerns about these terms and conditions, please contact us at:</p>
+                <p>[Website Name]<br>
+                [Address]<br>
+                [Phone Number]<br>
+                [Email Address]</p>
+            </address>
+        </section>
+		
+		</div>
+     <div th:replace="pages/fe/components/_inc_footer :: fe-footer"></div>
+</body>
+</html>

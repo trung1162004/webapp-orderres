@@ -1,0 +1,50 @@
+<div id="layoutSidenav_nav" th:fragment="sidebar" xmlns:th="http://www.w3.org/1999/xhtml">
+    <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+            <div class="nav">
+                <div class="sb-sidenav-menu-heading">Core</div>
+                <a class="nav-link" href="/admin">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Dashboard
+                </a>
+                <a class="nav-link" href="/admin/blog">
+                    <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
+                    Blog
+                </a>
+                <a class="nav-link" href="/admin/category">
+                    <div class="sb-nav-link-icon"><i class="fas fa-list-alt"></i></div>
+                    Category
+                </a>
+<!--                <a class="nav-link" href="/admin/order">-->
+<!--                    <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>-->
+<!--                    Order-->
+<!--                </a>-->
+                <a class="nav-link" href="/admin/restaurant-partner">
+                    <div class="sb-nav-link-icon"><i class="fas fa-bank"></i></div>
+                    Restaurant Partner
+                </a>
+                <a class="nav-link" href="/admin/restaurant">
+                    <div class="sb-nav-link-icon"><i class="fas fa-bank"></i></div>
+                    Restaurant
+                </a>
+                <a class="nav-link" href="/admin/user">
+                    <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                    User
+                </a>
+<!--                <a class="nav-link" href="/admin/product">-->
+<!--                    <div class="sb-nav-link-icon"><i class="fas fa-bullseye"></i></div>-->
+<!--                    Sản phẩm-->
+<!--                </a>-->
+                <a class="nav-link" href="/admin/slide">
+                    <div class="sb-nav-link-icon"><i class="fas fa-list-alt"></i></div>
+                    Slide
+                </a>
+
+            </div>
+        </div>
+        <div class="sb-sidenav-footer">
+            <div class="small">Logged in as:</div>
+            Xin chào <span sec:authentication="name"></span>
+        </div>
+    </nav>
+</div>

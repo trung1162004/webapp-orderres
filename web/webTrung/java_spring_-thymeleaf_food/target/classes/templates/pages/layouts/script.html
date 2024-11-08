@@ -1,0 +1,51 @@
+<div th:fragment="fe-script" xmlns:th="http://www.w3.org/1999/xhtml">
+    <script src="https://unicons.iconscout.com/release/v4.0.0/script/monochrome/bundle.js"></script>
+    <script th:src="@{/fe/libs/@popperjs/core/umd/popper.min.js}"></script>
+    <script th:src="@{/fe/libs/simplebar/simplebar.min.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+    <script th:src="@{/fe/js/pages/switcher.js}"></script>
+
+    <script th:src="@{/fe/libs/choices.js/public/assets/scripts/choices.min.js}"></script>
+
+    <script th:src="@{/fe/js/pages/job-list.init.js}"></script>
+
+    <script th:src="@{/fe/js/pages/dropdown&modal.init.js}"></script>
+
+    <!-- Swiper Js -->
+    <script th:src="@{/fe/libs/swiper/swiper-bundle.min.js}"></script>
+    <script th:src="@{/fe/js/pages/swiper.init.js}"></script>
+
+    <script th:src="@{/fe/js/pages/nav&tabs.js}"></script>
+
+    <script th:src="@{/fe/js/app.js}"></script>
+    <script type="text/javascript">
+        $(function(){
+            // $(".js-apply").click(function(event){
+            //     event.preventDefault();
+            //     $("#modal-id_apply").modal()
+            // })
+
+            $(".js-add-favourite").click(function(event){
+                event.preventDefault();
+                let URL = $(this).attr("href");
+                $.ajax({
+                    type : "GET",
+                    contentType : "application/json",
+                    url : URL,
+                    dataType : 'json',
+                    success : function(data) {
+                        console.log("SUCCESS: ", data);
+                        var result = "<h3> You just add new Person </h3>"
+                                + "<strong>Name:</strong> " + data.name + "<br>"
+                                + "<strong>Age:</strong> " + data.age;
+                        $("#ajax-response").html(result);
+                    },
+                    error : function(e) {
+                        console.log("ERROR: ", e);
+                    }
+                });
+            })
+        })
+    </script>
+</div>

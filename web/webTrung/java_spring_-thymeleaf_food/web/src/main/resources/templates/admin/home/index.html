@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="admin/layouts/head :: head" />
+<body class="sb-nav-fixed">
+<div th:replace="admin/layouts/nav :: nav" />
+<div id="layoutSidenav">
+    <div th:replace="admin/layouts/sidebar :: sidebar" />
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <h1 class="mt-4">Dashboard</h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+                <div class="row">
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-primary text-white mb-4">
+                            <div class="card-body">Owners</div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <span class="text-white stretched-link" th:text="${totalUserCompany}"></span>
+                                <div class="text-white"><i class="fas fa-user fa-fw"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-warning text-white mb-4">
+                            <div class="card-body">Customers</div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <span class="text-white stretched-link" th:text="${totalUser}"></span>
+                                <div class="text-white"><i class="fas fa-user fa-fw"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-success text-white mb-4">
+                            <div class="card-body">Sale Amount Booking</div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <span class="text-white stretched-link" th:text="'$' + ${#numbers.formatDecimal(totalOrderApprovedBooking, 1, 'COMMA', 2, 'POINT')}"></span>
+                                <div class="text-white"><i class="fa fa-bookmark"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-danger text-white mb-4">
+                            <div class="card-body">Sale Amount Cooperation</div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <span class="text-white stretched-link" th:text="'$' + ${#numbers.formatDecimal(totalOrderApprovedRegister, 1, 'COMMA', 2, 'POINT')}"></span>
+                                <div class="text-white"><i class="fas fa-book"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- New Cards -->
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-info text-white mb-4">
+                            <div class="card-body">Total Sales This Month</div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <span class="text-white stretched-link" th:text="'$' + ${#numbers.formatDecimal(totalSalesThisMonth, 1, 'COMMA', 2, 'POINT')}"></span>
+                                <div class="text-white"><i class="fas fa-calendar-day"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-secondary text-white mb-4">
+                            <div class="card-body">Total Packages Purchased This Month</div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <span class="text-white stretched-link" th:text="${totalPackagesThisMonth}"></span>
+                                <div class="text-white"><i class="fas fa-calendar-day"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add any additional content or charts here -->
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

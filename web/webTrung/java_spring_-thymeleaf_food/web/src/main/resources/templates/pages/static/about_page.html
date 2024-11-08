@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-mode="light" class="scroll-smooths group" data-theme-color="violet" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head  th:replace="pages/layouts/head :: fe-head" />
+<body class="bg-white dark:bg-neutral-800">
+<div th:replace="pages/layouts/nav-modal-fixed :: fe-nav-modal-fixed"></div>
+
+<div class="main-content">
+    <div class="page-content">
+
+        <section class="breadcrumb-customer group-data-[theme-color=violet]:bg-violet-500 group-data-[theme-color=sky]:bg-sky-500 group-data-[theme-color=red]:bg-red-500 group-data-[theme-color=green]:bg-green-500 group-data-[theme-color=pink]:bg-pink-500 group-data-[theme-color=blue]:bg-blue-500 dark:bg-neutral-900 bg-[url('../images/home/page-title.png')] bg-center bg-cover relative">
+            <div class="container mx-auto">
+                <div class="grid">
+                    <div class="col-span-12">
+                        <div class="text-white">
+                            <div class="page-next">
+                                <nav class="inline-block" aria-label="breadcrumb text-center">
+                                    <ol class="flex justify-center text-sm font-medium uppercase">
+                                        <li><a href="/">Trang chủ</a></li>
+                                        <li class="active" aria-current="page"><i class="bx bxs-chevron-right align-middle px-2.5"></i>Giới thiệu</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-16 overflow-hidden dark:bg-neutral-800">
+            <div class="container mx-auto">
+                <div class="grid items-center grid-cols-12 gap-5">
+                    <div class="col-span-12 lg:col-span-6">
+                        <h6 class="text-sm text-gray-900 uppercase dark:text-gray-50/80">About Us</h6>
+                        <h2 class="mt-1 mb-4 text-gray-900 dark:text-gray-50/80">Why <span class="font-bold text-yellow-500">35,000+</span> People Trust On <br> Jobcy?</h2>
+                        <p class="font-light text-gray-500 dark:text-gray-300">Start working with Jobcy that can provide everything you need to generate awareness, drive traffic, connect. Dummy text is text that is used in the publishing industry or by web designers to occupy the space which will later be filled with 'real' content.</p>
+
+                        <div class="grid grid-cols-12 gap-5 mt-8">
+                            <div class="col-span-12 md:col-span-6">
+                                <div class="relative">
+                                    <ul class="space-y-4 text-gray-700 about-list dark:text-gray-300">
+                                        <li class="ltr:pl-8 rtl:pr-8"> Digital Marketing Solutions</li>
+                                        <li class="ltr:pl-8 rtl:pr-8"> Our Talented &amp; Experienced Marketing Agency</li>
+                                        <li class="ltr:pl-8 rtl:pr-8"> Creative Design</li>
+                                        <li class="ltr:pl-8 rtl:pr-8"> New jobs Innovation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-span-12 md:col-span-6">
+                                <div class="relative">
+                                    <ul class="space-y-4 text-gray-700 about-list dark:text-gray-300">
+                                        <li class="ltr:pl-8 rtl:pr-8"> Digital Marketing Solutions</li>
+                                        <li class="ltr:pl-8 rtl:pr-8"> Our Talented &amp; Experienced Marketing Agency</li>
+                                        <li class="ltr:pl-8 rtl:pr-8"> Creative Design</li>
+                                        <li class="ltr:pl-8 rtl:pr-8"> New jobs Innovation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <button class="text-white border-transparent btn group-data-[theme-color=violet]:bg-violet-500 group-data-[theme-color=sky]:bg-sky-500 group-data-[theme-color=red]:bg-red-500 group-data-[theme-color=green]:bg-green-500 group-data-[theme-color=pink]:bg-pink-500 group-data-[theme-color=blue]:bg-blue-500 focus:ring focus:ring-custom-500/30" type="button" id="subscribebtn">Learn More <i class="align-middle uil uil-angle-right-b"></i> </button>
+                        </div>
+                    </div>
+                    <div class="col-span-12 lg:col-span-6">
+                        <div class="lg:w-[180%]">
+                            <img src="assets/images/about/img-01.jpg" alt="" class="h-auto rounded">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-16 bg-gray-50 dark:bg-neutral-700">
+            <div class="container mx-auto">
+                <div class="grid grid-cols-12">
+                    <div class="col-span-12 lg:col-span-3">
+                        <div class="mt-5 lg:mt-3">
+                            <div class="text-center text-gray-800 counters dark:text-gray-50">
+                                <h5 class="mb-0 counter"><span data-value="1" style="transform: translateY(-200%);">
+						<span>–</span>
+
+							<span>0</span>
+
+							<span>1</span>
+
+					</span><span data-value="0" style="transform: translateY(-100%);">
+						<span>–</span>
+
+							<span>0</span>
+
+					</span><span>,</span><span data-value="0" style="transform: translateY(-100%);">
+						<span>–</span>
+
+							<span>0</span>
+
+					</span><span data-value="0" style="transform: translateY(-100%);">
+						<span>–</span>
+
+							<span>0</span>
+
+					</span><span data-value="0" style="transform: translateY(-100%);">
+						<span>–</span>
+
+							<span>0</span>
+
+					</span><span>+</span></h5>
+                                <h6 class="mt-3 fs-16">Available Jobs</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12 lg:col-span-3">
+                        <div class="mt-5 lg:mt-3">
+                            <div class="text-center text-gray-800 counters dark:text-gray-50">
+                                <h5 class="mb-0 counter"><span data-value="7" style="transform: translateY(-800%);">
+						<span>–</span>
+
+							<span>0</span>
+
+							<span>1</span>
+
+							<span>2</span>
+
+							<span>3</span>
+
+							<span>4</span>
+
+							<span>5</span>
+
+							<span>6</span>
+
+							<span>7</span>
+
+					</span><span data-value="5" style="transform: translateY(-600%);">
+						<span>–</span>
+
+							<span>0</span>
+
+							<span>1</span>
+
+							<span>2</span>
+
+							<span>3</span>
+
+							<span>4</span>
+
+							<span>5</span>
+
+					</span><span data-value="0" style="transform: translateY(-100%);">
+						<span>–</span>
+
+							<span>0</span>
+
+					</span><span data-value="0" style="transform: translateY(-100%);">
+						<span>–</span>
+
+							<span>0</span>
+
+					</span><span>+</span></h5>
+                                <h6 class="mt-3 fs-16">Applications</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12 lg:col-span-3">
+                        <div class="mt-5 lg:mt-3">
+                            <div class="text-center text-gray-800 counters dark:text-gray-50">
+                                <h5 class="mb-0 counter"><span data-value="8" style="transform: translateY(-900%);">
+						<span>–</span>
+
+							<span>0</span>
+
+							<span>1</span>
+
+							<span>2</span>
+
+							<span>3</span>
+
+							<span>4</span>
+
+							<span>5</span>
+
+							<span>6</span>
+
+							<span>7</span>
+
+							<span>8</span>
+
+					</span><span>.</span><span data-value="8" style="transform: translateY(-900%);">
+						<span>–</span>
+
+							<span>0</span>
+
+							<span>1</span>
+
+							<span>2</span>
+
+							<span>3</span>
+
+							<span>4</span>
+
+							<span>5</span>
+
+							<span>6</span>
+
+							<span>7</span>
+
+							<span>8</span>
+
+					</span><span data-value="5" style="transform: translateY(-600%);">
+						<span>–</span>
+
+							<span>0</span>
+
+							<span>1</span>
+
+							<span>2</span>
+
+							<span>3</span>
+
+							<span>4</span>
+
+							<span>5</span>
+
+					</span><span>K</span></h5>
+                                <h6 class="mt-3 fs-16">Positive Feedback</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12 lg:col-span-3">
+                        <div class="mt-5 lg:mt-3">
+                            <div class="text-center text-gray-800 counters dark:text-gray-50">
+                                <h5 class="mb-0 counter"><span data-value="9" style="transform: translateY(-1000%);">
+						<span>–</span>
+
+							<span>0</span>
+
+							<span>1</span>
+
+							<span>2</span>
+
+							<span>3</span>
+
+							<span>4</span>
+
+							<span>5</span>
+
+							<span>6</span>
+
+							<span>7</span>
+
+							<span>8</span>
+
+							<span>9</span>
+
+					</span><span data-value="8" style="transform: translateY(-900%);">
+						<span>–</span>
+
+							<span>0</span>
+
+							<span>1</span>
+
+							<span>2</span>
+
+							<span>3</span>
+
+							<span>4</span>
+
+							<span>5</span>
+
+							<span>6</span>
+
+							<span>7</span>
+
+							<span>8</span>
+
+					</span><span data-value="7" style="transform: translateY(-800%);">
+						<span>–</span>
+
+							<span>0</span>
+
+							<span>1</span>
+
+							<span>2</span>
+
+							<span>3</span>
+
+							<span>4</span>
+
+							<span>5</span>
+
+							<span>6</span>
+
+							<span>7</span>
+
+					</span><span data-value="5" style="transform: translateY(-600%);">
+						<span>–</span>
+
+							<span>0</span>
+
+							<span>1</span>
+
+							<span>2</span>
+
+							<span>3</span>
+
+							<span>4</span>
+
+							<span>5</span>
+
+					</span></h5>
+                                <h6 class="mt-3 fs-16">Members</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-20 dark:bg-neutral-800">
+            <div class="container mx-auto">
+                <div class="grid grid-cols-1 gap-8">
+                    <div class="mb-10 text-center">
+                        <h3 class="mb-3 text-3xl text-gray-900 dark:text-gray-50">Key Features</h3>
+                        <p class="mb-5 text-gray-500 whitespace-pre-line dark:text-gray-300">Start working with Jobcy that can provide everything you need to generate <br> awareness, drive traffic, connect.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-12 gap-5">
+                    <div class="col-span-12 mg:col-span-12 lg:col-span-4">
+                        <div class="flex items-center p-4 transition-all duration-500 ease-in-out rounded-lg shadow-lg shadow-gray-100/20 hover:scale-105 hover:shadow-gray-100/40 dark:shadow-none dark:border dark:border-gray-50/5">
+                            <div class="key-features text-center shrink-0 h-[45px] w-[45px] bg-black leading-[2.5] rounded-lg bg-gradient-to-r group-data-[theme-color=violet]:from-violet-100 group-data-[theme-color=violet]:to-white group-data-[theme-color=sky]:from-sky-100 group-data-[theme-color=sky]:to-white group-data-[theme-color=red]:from-red-100 group-data-[theme-color=red]:to-white group-data-[theme-color=green]:from-green-100 group-data-[theme-color=green]:to-white group-data-[theme-color=pink]:from-pink-100 group-data-[theme-color=pink]:to-white group-data-[theme-color=blue]:from-blue-100 group-data-[theme-color=blue]:to-white group-data-[mode=dark]:to-neutral-900 group-data-[mode=dark]:from-neutral-900 ">
+                                <span class="uim-svg" style=""><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24" width="1em"><path class="uim-tertiary" d="M4,16c-1.10457,0-2-0.89543-2-2s0.89543-2,2-2s2,0.89543,2,2C5.99857,15.10398,5.10398,15.99857,4,16z M4,13.998L4,13.998z M4,6C2.89543,6,2,5.10457,2,4s0.89543-2,2-2s2,0.89543,2,2C5.99857,5.10398,5.10398,5.99857,4,6z M4,3.99805L4,3.99805z M14,6c-1.10457,0-2-0.89543-2-2s0.89543-2,2-2s2,0.89543,2,2C15.99857,5.10398,15.10398,5.99857,14,6z M14,3.99805L14,3.99805z M14,16c-1.10457,0-2-0.89543-2-2s0.89543-2,2-2s2,0.89543,2,2C15.99857,15.10398,15.10398,15.99857,14,16z M14,13.998L14,13.998z"></path><path class="uim-primary" d="M10,22c-1.10457,0-2-0.89543-2-2s0.89543-2,2-2s2,0.89543,2,2C11.99857,21.10398,11.10398,21.99857,10,22z M10,19.998L10,19.998z M10,12c-1.10457,0-2-0.89543-2-2s0.89543-2,2-2s2,0.89543,2,2C11.99857,11.10398,11.10398,11.99857,10,12z M10,9.998L10,9.998z M20,12c-1.10457,0-2-0.89543-2-2s0.89543-2,2-2s2,0.89543,2,2C21.99857,11.10398,21.10398,11.99857,20,12z M20,9.998L20,9.998z M20,22c-1.10457,0-2-0.89543-2-2s0.89543-2,2-2s2,0.89543,2,2C21.99857,21.10398,21.10398,21.99857,20,22z M20,19.998L20,19.998z"></path><path class="uim-quaternary" d="M12.27832,5c-0.37109-0.61503-0.37109-1.38497,0-2H5.72168c0.37109,0.61503,0.37109,1.38497,0,2H12.27832z M4,12c0.35218,0.00201,0.69742,0.0981,1,0.27832V5.72168c-0.61503,0.37109-1.38497,0.37109-2,0v6.55664C3.30258,12.0981,3.64782,12.00201,4,12z"></path><path class="uim-tertiary" d="M20,18c0.35218,0.00201,0.69742,0.0981,1,0.27832v-6.55664c-0.61502,0.37109-1.38498,0.37109-2,0v6.55664C19.30258,18.0981,19.64782,18.00201,20,18z M10,18c0.35218,0.00201,0.69742,0.0981,1,0.27832v-6.55664c-0.61503,0.37109-1.38497,0.37109-2,0v6.55664C9.30258,18.0981,9.64782,18.00201,10,18z"></path><path class="uim-quaternary" d="M12.27832,13H11v2h1.27832C11.90723,14.38497,11.90723,13.61503,12.27832,13z M9,15v-2H5.72168c0.37109,0.61503,0.37109,1.38497,0,2H9z"></path><path class="uim-tertiary" d="M18.27832,19h-6.55664c0.37109,0.61502,0.37109,1.38498,0,2h6.55664C17.90723,20.38498,17.90723,19.61502,18.27832,19z M18.27832,11c-0.37109-0.61503-0.37109-1.38497,0-2h-6.55664c0.37109,0.61503,0.37109,1.38497,0,2H18.27832z"></path><path class="uim-quaternary" d="M15,9V5.72168c-0.61503,0.37109-1.38497,0.37109-2,0V9H15z M13,11v1.27832c0.61503-0.37109,1.38497-0.37109,2,0V11H13z"></path></svg></span>
+                            </div>
+                            <div class="grow ltr:ml-3 rtl:mr-3">
+                                <h6 class="mb-0 text-lg text-gray-900 dark:text-gray-50">Manage Job Ads</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12 mg:col-span-12 lg:col-span-4">
+                        <div class="flex items-center p-4 transition-all duration-500 ease-in-out rounded-lg shadow-lg shadow-gray-100/20 hover:scale-105 hover:shadow-gray-100/40 dark:shadow-none dark:border dark:border-gray-50/5">
+                            <div class="key-features text-center shrink-0 h-[45px] w-[45px] bg-black leading-[2.5] rounded-lg bg-gradient-to-r group-data-[theme-color=violet]:from-violet-100 group-data-[theme-color=violet]:to-white group-data-[theme-color=sky]:from-sky-100 group-data-[theme-color=sky]:to-white group-data-[theme-color=red]:from-red-100 group-data-[theme-color=red]:to-white group-data-[theme-color=green]:from-green-100 group-data-[theme-color=green]:to-white group-data-[theme-color=pink]:from-pink-100 group-data-[theme-color=pink]:to-white group-data-[theme-color=blue]:from-blue-100 group-data-[theme-color=blue]:to-white group-data-[mode=dark]:to-neutral-900 group-data-[mode=dark]:from-neutral-900">
+                                <span class="uim-svg" style=""><svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24" width="1em"><path class="uim-tertiary" d="M17.6875,21.74414a2.01908,2.01908,0,0,1-1.24121-.42676L12.416,18.19531,9.71387,21.17773a1.00011,1.00011,0,0,1-1.69825-.38281l-2.0205-6.68164-3.625-1.26074A2.042,2.042,0,0,1,2.2666,9.03516L20.18652,1.7998A2.04245,2.04245,0,0,1,22.958,4.09473l-3.2627,16.0166a2.05413,2.05413,0,0,1-2.00781,1.63281Z"></path><path class="uim-primary" d="M8.97266,21.50586a.99968.99968,0,0,1-.957-.71l-2.168-7.15918A.9989.9989,0,0,1,6.34277,12.46L16.91016,6.958A.99975.99975,0,0,1,18.0791,8.55176l-7.083,7.083L9.95215,20.707a.99926.99926,0,0,1-.9336.79785C9.00293,21.50586,8.9873,21.50586,8.97266,21.50586Z"></path></svg></span>
+                            </div>
+                            <div class="grow ltr:ml-3 rtl:mr-3">
+                                <h6 class="mb-0 text-lg text-gray-900 dark:text-gray-50">Create CV</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12 mg:col-span-12 lg:col-span-4">
+                        <div class="flex items-center p-4 transition-all duration-500 ease-in-out rounded-lg shadow-lg shadow-gray-100/20 hover:scale-105 hover:shadow-gray-100/40 dark:shadow-none dark:border dark:border-gray-50/5">
+                            <div class="key-features text-center shrink-0 h-[45px] w-[45px] bg-black leading-[2.5] rounded-lg bg-gradient-to-r group-data-[theme-color=violet]:from-violet-100 group-data-[theme-color=violet]:to-white group-data-[theme-color=sky]:from-sky-100 group-data-[theme-color=sky]:to-white group-data-[theme-color=red]:from-red-100 group-data-[theme-color=red]:to-white group-data-[theme-color=green]:from-green-100 group-data-[theme-color=green]:to-white group-data-[theme-color=pink]:from-pink-100 group-data-[theme-color=pink]:to-white group-data-[theme-color=blue]:from-blue-100 group-data-[theme-color=blue]:to-white group-data-[mode=dark]:to-neutral-900 group-data-[mode=dark]:from-neutral-900">
+                                <span class="uim-svg" style=""><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24" width="1em"><path class="uim-primary" d="M21,10c-0.6,0-1-0.4-1-1c0,0,0,0,0,0V4h-5c-0.6,0-1-0.4-1-1s0.4-1,1-1h6c0.6,0,1,0.4,1,1c0,0,0,0,0,0v6C22,9.6,21.6,10,21,10C21,10,21,10,21,10z M3,10c-0.6,0-1-0.4-1-1c0,0,0,0,0,0V3c0-0.6,0.4-1,1-1c0,0,0,0,0,0h6c0.6,0,1,0.4,1,1S9.6,4,9,4H4v5C4,9.6,3.6,10,3,10C3,10,3,10,3,10z M9,22H3c-0.6,0-1-0.4-1-1c0,0,0,0,0,0v-6c0-0.6,0.4-1,1-1s1,0.4,1,1v5h5c0.6,0,1,0.4,1,1S9.6,22,9,22z M21,22h-6c-0.6,0-1-0.4-1-1s0.4-1,1-1h5v-5c0-0.6,0.4-1,1-1s1,0.4,1,1v6C22,21.6,21.6,22,21,22C21,22,21,22,21,22z"></path><path class="uim-tertiary" d="M9 10h6c1.1 0 2 .9 2 2v4c0 1.1-.9 2-2 2H9c-1.1 0-2-.9-2-2v-4C7 10.9 7.9 10 9 10zM11 9c0-.6.4-1 1-1s1 .4 1 1v1h2V9c0-1.7-1.3-3-3-3S9 7.3 9 9v1h2V9z"></path></svg></span>
+                            </div>
+                            <div class="grow ltr:ml-3 rtl:mr-3">
+                                <h6 class="mb-0 text-lg text-gray-900 dark:text-gray-50">Privacy Policy</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12 mg:col-span-12 lg:col-span-4">
+                        <div class="flex items-center p-4 transition-all duration-500 ease-in-out rounded-lg shadow-lg shadow-gray-100/20 hover:scale-105 hover:shadow-gray-100/40 dark:shadow-none dark:border dark:border-gray-50/5">
+                            <div class="key-features text-center shrink-0 h-[45px] w-[45px] bg-black leading-[2.5] rounded-lg bg-gradient-to-r group-data-[theme-color=violet]:from-violet-100 group-data-[theme-color=violet]:to-white group-data-[theme-color=sky]:from-sky-100 group-data-[theme-color=sky]:to-white group-data-[theme-color=red]:from-red-100 group-data-[theme-color=red]:to-white group-data-[theme-color=green]:from-green-100 group-data-[theme-color=green]:to-white group-data-[theme-color=pink]:from-pink-100 group-data-[theme-color=pink]:to-white group-data-[theme-color=blue]:from-blue-100 group-data-[theme-color=blue]:to-white group-data-[mode=dark]:to-neutral-900 group-data-[mode=dark]:from-neutral-900">
+                                <span class="uim-svg" style=""><svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24" width="1em"><path class="uim-primary" d="M17.99847,8.06429,6.00266,8.109,5.72559,4.78353A3.00021,3.00021,0,0,1,8.16965,1.482L8.959,1.33871a17.03145,17.03145,0,0,1,6.08616.00066l.78593.1428a3.00013,3.00013,0,0,1,2.44334,3.30136Z"></path><path class="uim-quaternary" d="M6.00891,8.109a5.99407,5.99407,0,0,0,11.98444-.04474Z"></path><path class="uim-primary" d="M17.19806,13.3847v.00007l-4.491,4.491a.99963.99963,0,0,1-1.41406,0l-4.491-4.491V13.3847a9.945,9.945,0,0,0-4.736,7.44031,1.00012,1.00012,0,0,0,.99414,1.1084H20.93994a1.00012,1.00012,0,0,0,.99414-1.1084A9.945,9.945,0,0,0,17.19806,13.3847Z"></path><path class="uim-tertiary" d="M15.69067,12.65405a6.01193,6.01193,0,0,1-7.382-.00012,10.004,10.004,0,0,0-1.50671.73084l4.491,4.491a.99963.99963,0,0,0,1.41406,0l4.491-4.491a10.005,10.005,0,0,0-1.507-.731Z"></path></svg></span>
+                            </div>
+                            <div class="grow ltr:ml-3 rtl:mr-3">
+                                <h6 class="mb-0 text-lg text-gray-900 dark:text-gray-50">Recruiter Profiles</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12 mg:col-span-12 lg:col-span-4">
+                        <div class="flex items-center p-4 transition-all duration-500 ease-in-out rounded-lg shadow-lg shadow-gray-100/20 hover:scale-105 hover:shadow-gray-100/40 dark:shadow-none dark:border dark:border-gray-50/5">
+                            <div class="key-features text-center shrink-0 h-[45px] w-[45px] bg-black leading-[2.5] rounded-lg bg-gradient-to-r group-data-[theme-color=violet]:from-violet-100 group-data-[theme-color=violet]:to-white group-data-[theme-color=sky]:from-sky-100 group-data-[theme-color=sky]:to-white group-data-[theme-color=red]:from-red-100 group-data-[theme-color=red]:to-white group-data-[theme-color=green]:from-green-100 group-data-[theme-color=green]:to-white group-data-[theme-color=pink]:from-pink-100 group-data-[theme-color=pink]:to-white group-data-[theme-color=blue]:from-blue-100 group-data-[theme-color=blue]:to-white group-data-[mode=dark]:to-neutral-900 group-data-[mode=dark]:from-neutral-900">
+                                <span class="uim-svg" style=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em"><rect width="20" height="15" x="2" y="3" class="uim-tertiary" rx="3"></rect><path class="uim-primary" d="M16,21H8a.99992.99992,0,0,1-.832-1.55469l4-6a1.03785,1.03785,0,0,1,1.66406,0l4,6A.99992.99992,0,0,1,16,21Z"></path></svg></span>
+                            </div>
+                            <div class="grow ltr:ml-3 rtl:mr-3">
+                                <h6 class="mb-0 text-lg text-gray-900 dark:text-gray-50">Display Jobs</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12 mg:col-span-12 lg:col-span-4">
+                        <div class="flex items-center p-4 transition-all duration-500 ease-in-out rounded-lg shadow-lg shadow-gray-100/20 hover:scale-105 hover:shadow-gray-100/40 dark:shadow-none dark:border dark:border-gray-50/5">
+                            <div class="key-features text-center shrink-0 h-[45px] w-[45px] bg-black leading-[2.5] rounded-lg bg-gradient-to-r group-data-[theme-color=violet]:from-violet-100 group-data-[theme-color=violet]:to-white group-data-[theme-color=sky]:from-sky-100 group-data-[theme-color=sky]:to-white group-data-[theme-color=red]:from-red-100 group-data-[theme-color=red]:to-white group-data-[theme-color=green]:from-green-100 group-data-[theme-color=green]:to-white group-data-[theme-color=pink]:from-pink-100 group-data-[theme-color=pink]:to-white group-data-[theme-color=blue]:from-blue-100 group-data-[theme-color=blue]:to-white group-data-[mode=dark]:to-neutral-900 group-data-[mode=dark]:from-neutral-900">
+                                <span class="uim-svg" style=""><svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24" width="1em"><path class="uim-primary" d="M17.73657 14.62189l-2.426 2.23065a11.60327 11.60327 0 0 1-4.29847 2.36987l.64368 3.00318a1.0003 1.0003 0 0 0 1.46924.66162l3.90527-2.20264a3.03526 3.03526 0 0 0 1.375-3.30371zM7.26562 8.77588L9.35431 6.296l-2.6048-.62848A2.77711 2.77711 0 0 0 3.36279 7.0249L1.1626 10.9248A.99989.99989 0 0 0 1.82422 12.394l3.07275.65869A12.88652 12.88652 0 0 1 7.26562 8.77588zM16.73373 8.81626a1.5 1.5 0 1 0-1.5-1.5A1.50055 1.50055 0 0 0 16.73373 8.81626z"></path><path class="uim-tertiary" d="M22.60107,2.062a1.00088,1.00088,0,0,0-.71289-.71289A11.24875,11.24875,0,0,0,10.46924,4.97217L7.26562,8.77588A12.93634,12.93634,0,0,0,4.3418,15.48682a1.00031,1.00031,0,0,0,.28466.83642l3.1001,3.1001a.99941.99941,0,0,0,.707.293c.02881,0,.05762-.00147.08692-.00391a11.84707,11.84707,0,0,0,6.79-2.85986l3.66308-3.36816A11.20387,11.20387,0,0,0,22.60107,2.062ZM16.7337,8.81622a1.5,1.5,0,1,1,1.5-1.5A1.50054,1.50054,0,0,1,16.7337,8.81622Z"></path></svg></span>
+                            </div>
+                            <div class="grow ltr:ml-3 rtl:mr-3">
+                                <h6 class="mb-0 text-lg text-gray-900 dark:text-gray-50">For Agencies</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12 mg:col-span-12 lg:col-span-4">
+                        <div class="flex items-center p-4 transition-all duration-500 ease-in-out rounded-lg shadow-lg shadow-gray-100/20 hover:scale-105 hover:shadow-gray-100/40 dark:shadow-none dark:border dark:border-gray-50/5">
+                            <div class="key-features text-center shrink-0 h-[45px] w-[45px] bg-black leading-[2.5] rounded-lg bg-gradient-to-r group-data-[theme-color=violet]:from-violet-100 group-data-[theme-color=violet]:to-white group-data-[theme-color=sky]:from-sky-100 group-data-[theme-color=sky]:to-white group-data-[theme-color=red]:from-red-100 group-data-[theme-color=red]:to-white group-data-[theme-color=green]:from-green-100 group-data-[theme-color=green]:to-white group-data-[theme-color=pink]:from-pink-100 group-data-[theme-color=pink]:to-white group-data-[theme-color=blue]:from-blue-100 group-data-[theme-color=blue]:to-white group-data-[mode=dark]:to-neutral-900 group-data-[mode=dark]:from-neutral-900">
+                                <span class="uim-svg" style=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em"><path class="uim-primary" d="M12,2A10.0165,10.0165,0,0,0,5.0061,4.87183V3a1,1,0,0,0-2,0V7.5a.99974.99974,0,0,0,1,1h4.5a1,1,0,0,0,0-2H6.21844A7.97907,7.97907,0,1,1,4,12a1,1,0,0,0-2,0A10,10,0,1,0,12,2Z"></path><path class="uim-primary" d="M14,13H12a.99974.99974,0,0,1-1-1V9a1,1,0,0,1,2,0v2h1a1,1,0,0,1,0,2Z"></path><path class="uim-tertiary" d="M12,4A8.00807,8.00807,0,0,0,6.21844,6.5H8.5061a1,1,0,0,1,0,2h-4.5a.98918.98918,0,0,1-.9776-.889A9.92176,9.92176,0,0,0,2,12a1,1,0,0,1,2,0,8,8,0,1,0,8-8Zm2,9H12a.99974.99974,0,0,1-1-1V9a1,1,0,0,1,2,0v2h1a1,1,0,0,1,0,2Z"></path></svg></span>
+                            </div>
+                            <div class="grow ltr:ml-3 rtl:mr-3">
+                                <h6 class="mb-0 text-lg text-gray-900 dark:text-gray-50">Quick Support</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12 mg:col-span-12 lg:col-span-4">
+                        <div class="flex items-center p-4 transition-all duration-500 ease-in-out rounded-lg shadow-lg shadow-gray-100/20 hover:scale-105 hover:shadow-gray-100/40 dark:shadow-none dark:border dark:border-gray-50/5">
+                            <div class="key-features text-center shrink-0 h-[45px] w-[45px] bg-black leading-[2.5] rounded-lg bg-gradient-to-r group-data-[theme-color=violet]:from-violet-100 group-data-[theme-color=violet]:to-white group-data-[theme-color=sky]:from-sky-100 group-data-[theme-color=sky]:to-white group-data-[theme-color=red]:from-red-100 group-data-[theme-color=red]:to-white group-data-[theme-color=green]:from-green-100 group-data-[theme-color=green]:to-white group-data-[theme-color=pink]:from-pink-100 group-data-[theme-color=pink]:to-white group-data-[theme-color=blue]:from-blue-100 group-data-[theme-color=blue]:to-white group-data-[mode=dark]:to-neutral-900 group-data-[mode=dark]:from-neutral-900">
+                                <span class="uim-svg" style=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em"><path class="uim-primary" d="M18,22a.99971.99971,0,0,1-.5-.13379L12,18.69434,6.5,21.86621A1.00042,1.00042,0,0,1,5,21V5A3.00328,3.00328,0,0,1,8,2h8a3.00328,3.00328,0,0,1,3,3V21a1.00072,1.00072,0,0,1-1,1Z"></path></svg></span>
+                            </div>
+                            <div class="grow ltr:ml-3 rtl:mr-3">
+                                <h6 class="mb-0 text-lg text-gray-900 dark:text-gray-50">Bookmark Jobs</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12 mg:col-span-12 lg:col-span-4">
+                        <div class="flex items-center p-4 transition-all duration-500 ease-in-out rounded-lg shadow-lg shadow-gray-100/20 hover:scale-105 hover:shadow-gray-100/40 dark:shadow-none dark:border dark:border-gray-50/5">
+                            <div class="key-features text-center shrink-0 h-[45px] w-[45px] bg-black leading-[2.5] rounded-lg bg-gradient-to-r group-data-[theme-color=violet]:from-violet-100 group-data-[theme-color=violet]:to-white group-data-[theme-color=sky]:from-sky-100 group-data-[theme-color=sky]:to-white group-data-[theme-color=red]:from-red-100 group-data-[theme-color=red]:to-white group-data-[theme-color=green]:from-green-100 group-data-[theme-color=green]:to-white group-data-[theme-color=pink]:from-pink-100 group-data-[theme-color=pink]:to-white group-data-[theme-color=blue]:from-blue-100 group-data-[theme-color=blue]:to-white group-data-[mode=dark]:to-neutral-900 group-data-[mode=dark]:from-neutral-900">
+                                <span class="uim-svg" style=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em"><path class="uim-quaternary" d="M6,23H2a.99974.99974,0,0,1-1-1V14a.99974.99974,0,0,1,1-1H6a.99974.99974,0,0,1,1,1v8A.99974.99974,0,0,1,6,23Z"></path><path class="uim-primary" d="M14,23H10a.99974.99974,0,0,1-1-1V2a.99974.99974,0,0,1,1-1h4a.99974.99974,0,0,1,1,1V22A.99974.99974,0,0,1,14,23Z"></path><path class="uim-tertiary" d="M22,23H18a.99974.99974,0,0,1-1-1V10a.99974.99974,0,0,1,1-1h4a.99974.99974,0,0,1,1,1V22A.99974.99974,0,0,1,22,23Z"></path></svg></span>
+                            </div>
+                            <div class="grow ltr:ml-3 rtl:mr-3">
+                                <h6 class="mb-0 text-lg text-gray-900 dark:text-gray-50">Real-time Analytics</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section class="py-20 bg-gray-50 dark:bg-neutral-700">
+            <div class="container mx-auto">
+                <div class="grid grid-cols-12">
+                    <div class="col-span-12">
+                        <div class="text-center">
+                            <h3 class="pb-2 mb-6 text-3xl text-gray-900 dark:text-gray-50">See everything about your employee at one place.</h3>
+                            <p class="mx-auto text-gray-500 dark:text-gray-300">Start working with Jobcy that can provide everything you need to generate <br> awareness, drive traffic, connect.</p>
+                            <div class="mt-6 space-x-2">
+                                <a href="javascript:void(0)" class="btn group-data-[theme-color=violet]:bg-violet-500 group-data-[theme-color=sky]:bg-sky-500 group-data-[theme-color=red]:bg-red-500 group-data-[theme-color=green]:bg-green-500 group-data-[theme-color=pink]:bg-pink-500 group-data-[theme-color=blue]:bg-blue-500 border-transparent text-white mt-2 hover:-translate-y-1.5 transition-all duration-500 ease-in-out focus:ring focus:ring-custom-500/20"><i class="mr-1 uil uil-rocket"></i> Get Started Now</a>
+                                <a href="javascript:void(0)" class="btn group-data-[theme-color=violet]:border-violet-500 group-data-[theme-color=sky]:border-sky-500 group-data-[theme-color=red]:border-red-500 group-data-[theme-color=green]:border-green-500 group-data-[theme-color=pink]:border-pink-500 group-data-[theme-color=blue]:border-blue-500 group-data-[theme-color=violet]:text-violet-500 group-data-[theme-color=sky]:text-sky-500 group-data-[theme-color=red]:text-red-500 group-data-[theme-color=green]:text-green-500 group-data-[theme-color=pink]:text-pink-500 group-data-[theme-color=blue]:text-blue-500 font-medium mt-2 group-data-[theme-color=violet]:hover:bg-violet-500 group-data-[theme-color=violet]:hover:text-white group-data-[theme-color=sky]:hover:bg-sky-500 group-data-[theme-color=sky]:hover:text-white group-data-[theme-color=red]:hover:bg-red-500 group-data-[theme-color=red]:hover:text-white group-data-[theme-color=green]:hover:bg-green-500 group-data-[theme-color=green]:hover:text-white group-data-[theme-color=pink]:hover:bg-pink-500 group-data-[theme-color=pink]:hover:text-white group-data-[theme-color=blue]:hover:bg-blue-500 group-data-[theme-color=blue]:hover:text-white hover:-translate-y-1.5 transition-all duration-500 ease-in-out focus:ring focus:ring-custom-500/20"><i class="mr-1 uil uil-capsule"></i> Free Trial</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-16 dark:bg-neutral-800">
+            <div class="container mx-auto">
+                <div class="grid items-center grid-cols-12 gap-8">
+                    <div class="col-span-12 lg:col-span-5">
+                        <div class="relative mb-5 section-title mb-lg-0">
+                            <h4 class="mb-4 text-3xl text-gray-900 dark:text-gray-50">Company Testimonial</h4>
+                            <p class="text-gray-500 dark:text-gray-300">Our task must be to free ourselves by widening our circle of compassion to embrace all living creatures Integer varius lacus non magna tempor congue natuasre the whole its beauty you vestibulum egestas them feel.</p>
+                            <ul class="mt-8 space-y-3 text-gray-500 about-list dark:text-gray-300">
+                                <li class="ltr:pl-8 rtl:pr-8">Digital Marketing Solutions for Tomorrow.</li>
+                                <li class="ltr:pl-8 rtl:pr-8">Our Talented &amp; Experienced Marketing Agency.</li>
+                                <li class="ltr:pl-8 rtl:pr-8">Create your own skin to match your brand.</li>
+                                <li class="ltr:pl-8 rtl:pr-8"> It is said that song composers of the past used texts.</li>
+                            </ul>
+                            <div class="items-center mt-6 lg:flex lg:justify-between">
+                                <div>
+                                    <a href="javascript:void(0)" class="btn group-data-[theme-color=violet]:border-violet-500 group-data-[theme-color=sky]:border-sky-500 group-data-[theme-color=red]:border-red-500 group-data-[theme-color=green]:border-green-500 group-data-[theme-color=pink]:border-pink-500 group-data-[theme-color=blue]:border-blue-500 group-data-[theme-color=violet]:text-violet-500 group-data-[theme-color=sky]:text-sky-500 group-data-[theme-color=red]:text-red-500 group-data-[theme-color=green]:text-green-500 group-data-[theme-color=pink]:text-pink-500 group-data-[theme-color=blue]:text-blue-500 font-medium mt-2 group-data-[theme-color=violet]:hover:bg-violet-500 group-data-[theme-color=violet]:hover:text-white group-data-[theme-color=sky]:hover:bg-sky-500 group-data-[theme-color=sky]:hover:text-white group-data-[theme-color=red]:hover:bg-red-500 group-data-[theme-color=red]:hover:text-white group-data-[theme-color=green]:hover:bg-green-500 group-data-[theme-color=green]:hover:text-white group-data-[theme-color=pink]:hover:bg-pink-500 group-data-[theme-color=pink]:hover:text-white group-data-[theme-color=blue]:hover:bg-blue-500 group-data-[theme-color=blue]:hover:text-white hover:-translate-y-1.5 transition-all duration-500 ease-in-out focus:ring focus:ring-custom-500/20">Learn More <i class="uil uil-angle-right-b ms-1"></i></a>
+                                </div>
+                                <ul class="flex gap-4 mt-8 mb-0 text-16 lg:mt-0">
+                                    <li class="text-gray-500 transition-all duration-300 hover:bg-violet-500"><a href="javascript:void(0)" class=""><i class="uil uil-facebook-f"></i></a></li>
+                                    <li class="text-gray-500 transition-all duration-300 hover:bg-violet-500"><a href="javascript:void(0)" class=""><i class="uil uil-twitter"></i></a></li>
+                                    <li class="text-gray-500 transition-all duration-300 hover:bg-violet-500"><a href="javascript:void(0)" class=""><i class="uil uil-whatsapp"></i></a></li>
+                                    <li class="text-gray-500 transition-all duration-300 hover:bg-violet-500"><a href="javascript:void(0)" class=""><i class="uil uil-instagram"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12 lg:col-span-7">
+                        <div class="nav-tabs">
+                            <div class="grid items-center grid-cols-12">
+                                <div class="col-span-12 md:col-span-3">
+                                    <div class="flex-col justify-center">
+                                        <a href="#!" class="group active" data-tw-toggle="tab" data-tw-target="v-pills-home">
+                                            <div class="relative w-24 mx-auto my-3">
+                                                <img src="assets/images/about/img-02.jpg" alt="" class="rounded">
+                                                <div class="absolute inset-0 bg-black/40 hidden group-[.active]:block text-center leading-[8] ">
+                                                    <i class="text-2xl text-white mdi mdi-plus-circle-outline "></i>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="#!" class="transition-all duration-500 ease-in-out group" data-tw-toggle="tab" data-tw-target="v-pills-profile">
+                                            <div class="relative w-24 mx-auto my-3">
+                                                <img src="assets/images/about/img-03.jpg" alt="" class="rounded">
+                                                <div class="absolute inset-0 bg-black/40 hidden group-[.active]:block text-center leading-[8]">
+                                                    <i class="text-2xl text-white mdi mdi-plus-circle-outline "></i>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="#!" class="transition-all duration-500 ease-in-out group" data-tw-toggle="tab" data-tw-target="v-pills-messages">
+                                            <div class="relative w-24 mx-auto my-3">
+                                                <img src="assets/images/about/img-04.jpg" alt="" class="rounded">
+                                                <div class="absolute inset-0 bg-black/40 hidden group-[.active]:block text-center leading-[8]">
+                                                    <i class="text-2xl text-white mdi mdi-plus-circle-outline "></i>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="#!" class="transition-all duration-500 ease-in-out group" data-tw-toggle="tab" data-tw-target="v-pills-settings">
+                                            <div class="relative w-24 mx-auto my-3">
+                                                <img src="assets/images/about/img-05.jpg" alt="" class="rounded">
+                                                <div class="absolute inset-0 bg-black/40 hidden group-[.active]:block text-center leading-[8]">
+                                                    <i class="text-2xl text-white mdi mdi-plus-circle-outline "></i>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-span-12 md:col-span-9">
+                                    <div class="tab-content">
+                                        <div class="block w-full pr-10 lg:pr-0 tab-pane" id="v-pills-home">
+                                            <img src="assets/images/about/img-02.jpg" alt="" class="rounded-lg lg:max-w-md">
+                                        </div>
+                                        <div class="hidden w-full pr-10 lg:pr-0 tab-pane" id="v-pills-profile">
+                                            <img src="assets/images/about/img-03.jpg" alt="" class="rounded-lg lg:max-w-md">
+                                        </div>
+                                        <div class="hidden w-full pr-10 lg:pr-0 tab-pane" id="v-pills-messages">
+                                            <img src="assets/images/about/img-04.jpg" alt="" class="rounded-lg lg:max-w-md">
+                                        </div>
+                                        <div class="hidden w-full pr-10 lg:pr-0 tab-pane" id="v-pills-settings">
+                                            <img src="assets/images/about/img-05.jpg" alt="" class="rounded-lg lg:max-w-md">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+<!-- start subscribe -->
+<section class="relative py-16 overflow-hidden bg-zinc-700 dark:bg-neutral-900">
+    <div class="container mx-auto">
+        <div class="grid items-center grid-cols-12 gap-5">
+            <div class="col-span-12 lg:col-span-7">
+                <div class="text-center lg:text-start">
+                    <h4 class="text-white">Get New Jobs Notification!</h4>
+                    <p class="mt-1 mb-0 text-white/50 dark:text-gray-300">Subscribe &amp; get all related jobs notification.</p>
+                </div>
+            </div>
+            <div class="z-40 col-span-12 lg:col-span-5">
+                <form class="flex" action="#">
+                    <input
+                            type="text" class="w-full text-gray-100 bg-transparent rounded-md border-gray-50/30 ltr:border-r-0 rtl:border-l-0 ltr:rounded-r-none rtl:rounded-l-none placeholder:text-13 placeholder:text-gray-100 dark:text-gray-100 dark:bg-white/5 dark:border-neutral-600 focus:ring-0 focus:ring-offset-0"
+                            id="subscribe" placeholder="Enter your email" >
+                    <button class="text-white border-transparent btn ltr:rounded-l-none rtl:rounded-r-none group-data-[theme-color=violet]:bg-violet-500 group-data-[theme-color=sky]:bg-sky-500 group-data-[theme-color=red]:bg-red-500 group-data-[theme-color=green]:bg-green-500 group-data-[theme-color=pink]:bg-pink-500 group-data-[theme-color=blue]:bg-blue-500 focus:ring focus:ring-custom-500/30" type="button" id="subscribebtn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="absolute right-0 -top-10 -z-0 opacity-20">
+        <img src="assets/images/subscribe.png" alt="" class="img-fluid">
+    </div>
+</section>
+<!-- end subscribe -->
+<!-- Footer Start -->
+<footer class="footer ">
+    <!-- start footer -->
+    <section class="py-12 bg-zinc-800 dark:bg-neutral-900">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-12 lg:gap-10">
+                <div class="col-span-12 xl:col-span-4">
+                    <div class="mr-12">
+                        <h4 class="text-white mb-6 text-[23px]">Jobcy</h4>
+                        <p class="text-white/50 dark:text-gray-300">
+                            It is a long established fact that a reader will be of a page reader
+                            will be of at its layout.
+                        </p>
+                        <p class="mt-3 text-white dark:text-gray-50">Follow Us on:</p>
+                        <div class="mt-5">
+                            <ul class="flex gap-3">
+                                <li class="w-8 h-8 leading-loose text-center text-gray-200 transition-all duration-300 border rounded-full cursor-pointer border-gray-200/50 hover:text-gray-50 group-data-[theme-color=violet]:hover:bg-violet-500 group-data-[theme-color=sky]:hover:bg-sky-500 group-data-[theme-color=red]:hover:bg-red-500 group-data-[theme-color=green]:hover:bg-green-500 group-data-[theme-color=pink]:hover:bg-pink-500 group-data-[theme-color=blue]:hover:bg-blue-500 hover:border-transparent">
+                                    <a href="#">
+                                        <i class="uil uil-facebook-f"></i>
+                                    </a>
+                                </li>
+                                <li class="w-8 h-8 leading-loose text-center text-gray-200 transition-all duration-300 border rounded-full cursor-pointer border-gray-200/50 hover:text-gray-50 group-data-[theme-color=violet]:hover:bg-violet-500 group-data-[theme-color=sky]:hover:bg-sky-500 group-data-[theme-color=red]:hover:bg-red-500 group-data-[theme-color=green]:hover:bg-green-500 group-data-[theme-color=pink]:hover:bg-pink-500 group-data-[theme-color=blue]:hover:bg-blue-500 hover:border-transparent">
+                                    <a href="#">
+                                        <i class="uil uil-linkedin-alt"></i>
+                                    </a>
+                                </li>
+                                <li class="w-8 h-8 leading-loose text-center text-gray-200 transition-all duration-300 border rounded-full cursor-pointer border-gray-200/50 hover:text-gray-50 group-data-[theme-color=violet]:hover:bg-violet-500 group-data-[theme-color=sky]:hover:bg-sky-500 group-data-[theme-color=red]:hover:bg-red-500 group-data-[theme-color=green]:hover:bg-green-500 group-data-[theme-color=pink]:hover:bg-pink-500 group-data-[theme-color=blue]:hover:bg-blue-500 hover:border-transparent">
+                                    <a href="#">
+                                        <i class="uil uil-google"></i>
+                                    </a>
+                                </li>
+                                <li class="w-8 h-8 leading-loose text-center text-gray-200 transition-all duration-300 border rounded-full cursor-pointer border-gray-200/50 hover:text-gray-50 group-data-[theme-color=violet]:hover:bg-violet-500 group-data-[theme-color=sky]:hover:bg-sky-500 group-data-[theme-color=red]:hover:bg-red-500 group-data-[theme-color=green]:hover:bg-green-500 group-data-[theme-color=pink]:hover:bg-pink-500 group-data-[theme-color=blue]:hover:bg-blue-500 hover:border-transparent">
+                                    <a href="#">
+                                        <i class="uil uil-twitter"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-12 mt-8 md:col-span-6 xl:col-span-2 md:mt-0">
+                    <p class="mb-6 text-white text-16">Company</p>
+                    <ul class="space-y-4">
+                        <li class="text-sm transition-all duration-500 ease-in-out text-white/50 hover:text-gray-50 hover:text-base dark:text-gray-300 dark:hover:text-gray-50">
+                            <a href="about.html">
+                                <i class="mdi mdi-chevron-right"></i> About Us
+                            </a>
+                        </li>
+                        <li class="text-sm transition-all duration-500 ease-in-out text-white/50 hover:text-gray-50 hover:text-base dark:text-gray-300 dark:hover:text-gray-50">
+                            <a href="contact.html">
+                                <i class="mdi mdi-chevron-right"></i> Contact Us
+                            </a>
+                        </li>
+                        <li class="text-sm transition-all duration-500 ease-in-out text-white/50 hover:text-gray-50 hover:text-base dark:text-gray-300 dark:hover:text-gray-50">
+                            <a href="services.html">
+                                <i class="mdi mdi-chevron-right"></i> Services
+                            </a>
+                        </li>
+                        <li class="text-sm transition-all duration-500 ease-in-out text-white/50 hover:text-gray-50 hover:text-base dark:text-gray-300 dark:hover:text-gray-50">
+                            <a href="blog.html">
+                                <i class="mdi mdi-chevron-right"></i> Blog
+                            </a>
+                        </li>
+                        <li class="text-sm transition-all duration-500 ease-in-out text-white/50 hover:text-gray-50 hover:text-base dark:text-gray-300 dark:hover:text-gray-50">
+                            <a href="team.html">
+                                <i class="mdi mdi-chevron-right"></i> Team
+                            </a>
+                        </li>
+                        <li class="text-sm transition-all duration-500 ease-in-out text-white/50 hover:text-gray-50 hover:text-base dark:text-gray-300 dark:hover:text-gray-50">
+                            <a href="pricing.html">
+                                <i class="mdi mdi-chevron-right"></i> Pricing
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-span-12 mt-8 md:col-span-6 xl:col-span-2 md:mt-0">
+                    <p class="mb-6 text-white text-16">For Jobs</p>
+                    <ul class="space-y-4">
+                        <li class="text-sm transition-all duration-500 ease-in-out text-white/50 hover:text-gray-50 hover:text-base dark:text-gray-300 dark:hover:text-gray-50">
+                            <a href="job-categories.html">
+                                <i class="mdi mdi-chevron-right"></i> Browser Categories
+                            </a>
+                        </li>
+                        <li class="text-sm transition-all duration-500 ease-in-out text-white/50 hover:text-gray-50 hover:text-base dark:text-gray-300 dark:hover:text-gray-50">
+                            <a href="job-list.html">
+                                <i class="mdi mdi-chevron-right"></i> Browser Jobs
+                            </a>
+                        </li>
+                        <li class="text-sm transition-all duration-500 ease-in-out text-white/50 hover:text-gray-50 hover:text-base dark:text-gray-300 dark:hover:text-gray-50">
+                            <a href="job-details.html">
+                                <i class="mdi mdi-chevron-right"></i> Job Details
+                            </a>
+                        </li>
+                        <li class="text-sm transition-all duration-500 ease-in-out text-white/50 hover:text-gray-50 hover:text-base dark:text-gray-300 dark:hover:text-gray-50">
+                            <a href="bookmark-jobs.html">
+                                <i class="mdi mdi-chevron-right"></i> Bookmark Jobs
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-span-12 mt-8 md:col-span-6 xl:col-span-2 md:mt-0">
+                    <p class="mb-6 text-white text-16">For Candidates</p>
+                    <ul class="space-y-4">
+                        <li class="text-sm transition-all duration-500 ease-in-out text-white/50 hover:text-gray-50 hover:text-base dark:text-gray-300 dark:hover:text-gray-50">
+                            <a href="candidate-list.html">
+                                <i class="mdi mdi-chevron-right"></i> Candidate List
+                            </a>
+                        </li>
+                        <li class="text-sm transition-all duration-500 ease-in-out text-white/50 hover:text-gray-50 hover:text-base dark:text-gray-300 dark:hover:text-gray-50">
+                            <a href="candidate-grid.html">
+                                <i class="mdi mdi-chevron-right"></i> Candidate Grid
+                            </a>
+                        </li>
+                        <li class="text-sm transition-all duration-500 ease-in-out text-white/50 hover:text-gray-50 hover:text-base dark:text-gray-300 dark:hover:text-gray-50">
+                            <a href="candidate-details.html">
+                                <i class="mdi mdi-chevron-right"></i> Candidate Details
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-span-12 mt-8 md:col-span-6 xl:col-span-2 md:mt-0">
+                    <p class="mb-6 text-white text-16">Support</p>
+                    <ul class="space-y-4">
+                        <li class="text-sm transition-all duration-500 ease-in-out text-white/50 hover:text-gray-50 hover:text-base dark:text-gray-300 dark:hover:text-gray-50">
+                            <a href="contact.html">
+                                <i class="mdi mdi-chevron-right"></i> Help Center
+                            </a>
+                        </li>
+                        <li class="text-sm transition-all duration-500 ease-in-out text-white/50 hover:text-gray-50 hover:text-base dark:text-gray-300 dark:hover:text-gray-50">
+                            <a href="faqs.html">
+                                <i class="mdi mdi-chevron-right"></i> FAQ'S
+                            </a>
+                        </li>
+                        <li class="text-sm transition-all duration-500 ease-in-out text-white/50 hover:text-gray-50 hover:text-base dark:text-gray-300 dark:hover:text-gray-50">
+                            <a href="privacy-policy.html">
+                                <i class="mdi mdi-chevron-right"></i> Privacy Policy
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end footer -->
+    <!-- strat footer alt -->
+    <section class="py-6 border-t bg-zinc-800 border-gray-100/10 dark:bg-neutral-900">
+        <div class="container mx-auto">
+            <div class="text-center">
+                <p class="mb-0 text-center text-white/50">
+                    <script>document.write(new Date().getFullYear())</script>
+                    © Jobcy - Job Listing Page
+                    Template by
+                    <a href="https://themeforest.net/search/themesdesign" target="_blank" class="underline transition-all duration-300 hover:text-gray-50">Themesdesign</a>
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- end footer alt -->
+</footer>
+<!-- end Footer -->
+
+<div th:replace="pages/layouts/script :: fe-script"></div>
+
+</body>
+</html>
